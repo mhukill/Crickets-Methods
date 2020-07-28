@@ -320,7 +320,7 @@ num.frames <- 12
 angle.frame <- rep(0, frame_len/num.frames)
 for(i in seq(0, T, num.frames))
 {
-  angle.frame[i/num.frames] <- mean(angles[i:i+num.frames-1])  
+   angle.frame[i/num.frames] <- mean(angles[i:i+num.frames-1])  
 }
 
 frames <- seq(1:frame_len)
@@ -665,7 +665,7 @@ low <- rep(0,0)
 mid <- rep(0,0)
 high <- rep(0,0)
 for(i in 1:length(shots)){
-  if(dbvals[i] > 1 & dbvals[i] < 61){
+  if(dbvals[i] > 49 & dbvals[i] < 61){
     low <- c(low, bplot[2,i])
   } else if (dbvals[i] > 61 & dbvals[i] < 76){
     mid <- c(mid, bplot[2,i])
@@ -673,64 +673,97 @@ for(i in 1:length(shots)){
     high <- c(high, bplot[2,i])
   }
 }
-par(mgp=c(3,2,0))
-boxplot(low, mid, high,main = "Comparison of Angles at Different Volumes", at = c(1,3,5), ylab= "Degree Measure",
-        xlab = "Decibel Range",
-        names = c("Low \n(0 - 60 dB)" , "Medium \n(60-75 dB)", "High \n(75-90 dB)"), las = 0, col = c("orange","red", "green"), border = "black",
-                horizontal = FALSE, notch = FALSE )
-        
 
-# pdf('Figures/191009_190708_ALTPlots.pdf', width=30,height=20)
-# par(mfrow = c(9,1), mar = c(.5,5,.5,.5), oma = c(8,2,4,24))
-# plot(1:frame_len, ss_x, type = "l", xlab = "Frame Number", ylab = "Sound", col = "midnightblue", cex = 1.5, cex.lab = 2, cex.axis = 2)
-# plot(shots, angle.frame, type = "l", xlab = "",ylab = "Angle Measurement", col = "mediumorchid4", cex = 1.5, cex.lab = 2, cex.axis = 1)
-# plot(x=seq(7:(frame_len - 5)), abs(angle.data[(7:(N-5)),3]), xlab = "Time", ylab = "|Angle Velocity|", ylim = c(0,3.5), type='l', cex = 1.5, cex.lab = 2, cex.axis = 1) # smooth derivative
-# par(new=TRUE)
-# plot(shots,bodyshot.twitch, type = "l", xaxt = "n",yaxt = "n", xlab="", ylab="", col = "blue", cex = 1.5, cex.lab = 2, cex.axis = 1)
-# axis(side=4)
-# par(new=FALSE)
-# plot(x=seq(7:(frame_len - 5)), abs(angle.data[(7:(N-5)),5]), xlab = "Time", ylab = "|Angle Acceleration|", type='l', cex = 1.5, cex.lab = 2, cex.axis = 1) # smooth Second derivative
-# 
-# plot(shots,lowerrightshot.twitch, type = "l", xlab = "", ylab = "Unnormalized Twitch", col = "red3", cex = 1.5, cex.lab=2, cex.axis = 1)
-# points(shots,lowerleftshot.twitch, type = "l", xlab = "", ylab = "Lower Left Twitch", col = "gold2", cex = 1.5, cex.axis = 1)
-# points(shots,upperrightshot.twitch, type = "l", xlab = "", ylab = "Upper Right Twitch", col = "darkorange2", cex = 1.5, cex.axis = 1)
-# points(shots,upperleftshot.twitch , type = "l", xlab = "", ylab = "Upper Left Twitch", col = "lime green", cex = 1.5, cex.axis = 1)
-# plot(shots,bodyshot.twitch/max(bodyshot.twitch), type = "l", xlab = "", ylab = "Normalized Twitch", col = "blue", cex = 1.5, cex.lab = 2, cex.axis = 1)
-# points(shots,upperleftshot.twitch/max(upperleftshot.twitch), type = "l", xlab = "", ylab = "Upper Left Twitch", col = "lime green", cex = 1.5, cex.axis = 1)
-# points(shots,lowerleftshot.twitch/max(lowerleftshot.twitch), type = "l", xlab = "", ylab = "Lower Left Twitch", col = "gold2", cex = 1.5, cex.axis = 1)
-# points(shots,upperrightshot.twitch/max(upperrightshot.twitch), type = "l", xlab = "", ylab = "Upper Right Twitch", col = "darkorange2", cex = 1.5, cex.axis = 1)
-# points(shots,lowerrightshot.twitch/max(lowerrightshot.twitch), type = "l", xlab = "", ylab = "Lower Right Twitch", col = "red3", cex = 1.5, cex.axis = 1)
-# #legend("right", xpd = TRUE, cex=1.7, pch=1, pt.cex = 1, legend = c("Body Twitch", "Upper Left Twitch", "Lower Left Twitch", "Upper Right Twitch", "Lower Right Twitch"), col = c("blue", "limegreen", "gold2", "darkorange2", "red3"),lty=1:1, lwd=4)
-# plot(shots,bodyshot.twitch.ad, type = "l", xlab = "", ylab = "Proportional Twitch", col = "blue", cex = 1.5, cex.lab = 2, cex.axis = 1)
-# points(shots,upperleftshot.twitch.ad, type = "l", xlab = "", ylab = "Upper Left Twitch", col = "lime green", cex = 1.5, cex.axis = 1)
-# points(shots,lowerleftshot.twitch.ad, type = "l", xlab = "", ylab = "Lower Left Twitch", col = "gold2", cex = 1.5, cex.axis = 1)
-# points(shots,upperrightshot.twitch.ad, type = "l", xlab = "", ylab = "Upper Right Twitch", col = "darkorange2", cex = 1.5, cex.axis = 1)
-# points(shots,lowerrightshot.twitch.ad, type = "l", xlab = "", ylab = "Lower Right Twitch", col = "red3", cex = 1.5, cex.axis = 1)
-# #barplot(as.matrix(final_df), col = c("blue", "limegreen", "gold2", "darkorange2", "red3"), xlab = "Shots", ylab= "Twitch Proportion", legend.text = TRUE, args.legend = list(x = "topright", bty = "n",inset=c(-0.7, 0)))
-# 
-# plot(shots, average.twitch, type = "l", xlab = "", ylab = "Average Twitch", cex = 1.5, cex.lab = 2, cex.axis = 1)
-# plot(viz_a_x[14,],viz_a_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "black",pch = 16, cex = 1.5, cex.lab = 2, cex.axis = 1, ylab = "Configurations")
-# points(viz_w_x[14,],viz_w_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "blue",pch = 16, cex = 1.5, cex.axis = 1)
-# points(viz_ul_x[14,],viz_ul_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "lime green",pch = 16, cex = 1.5, cex.axis = 1)
-# points(viz_ll_x[14,],viz_ll_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "gold2",pch = 16, cex = 1.5, cex.axis = 1)
-# points(viz_ur_x[14,],viz_ur_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "darkorange2",pch = 16, cex = 1.5, cex.axis = 1)
-# points(viz_lr_x[14,],viz_lr_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "red3",pch = 16, cex = 1.5, cex.axis = 1)
-# for(j in 1:len)
-# {
-#   segments(viz_a_x[14,j], viz_a_y[14,j], viz_w_x[14,j],  viz_w_y[14,j], col = "grey", lwd = 2)
-#   segments(viz_a_x[14,j], viz_a_y[14,j], viz_ul_x[14,j], viz_ul_y[14,j], col = "grey", lwd = 2)
-#   segments(viz_a_x[14,j], viz_a_y[14,j], viz_ur_x[14,j], viz_ur_y[14,j], col = "grey", lwd = 2)
-#   segments(viz_ul_x[14,j], viz_ul_y[14,j], viz_ll_x[14,j], viz_ll_y[14,j], col = "grey", lwd = 2)
-#   segments(viz_ur_x[14,j], viz_ur_y[14,j], viz_lr_x[14,j], viz_lr_y[14,j], col = "grey", lwd = 2)
-# }
-# title(main = "191009_190708_ALT Graphs", sub = "Frame Number",cex.sub = 2.5,outer = TRUE, cex.main = 3)
-# par(fig = c(0, 1, 0, 1), oma = c(0, 0, 0, 0), mar = c(0, 0, 0, 0), new = TRUE)
-# plot(0, 0, type = "n", bty = "n", xaxt = "n", yaxt = "n")
-# legend("right", c("Body Twitch", "Upper Left Twitch", "Lower Left Twitch", "Upper Right Twitch", "Lower Right Twitch"), xpd = TRUE, horiz = FALSE, inset = c(0.007,0
-# ), bty = "n", pch = 1, col = c("blue", "limegreen", "gold2", "darkorange2", "red3"), cex = 2, y.intersp = 5,lty=1:1, lwd=4)
+par(mgp=c(2.5,0.9,0))
+boxplot(low, mid, high, at = c(1,3,5),
+        ylab = expression(paste("Angle Measure (",degree, ")")), xlab = "Decibel Range", cex.lab = 1.5, cex.axis = 1.2,
+        names = c("50-60 dB" , "65-75 dB", "80-90 dB"), las = 0, 
+        col = c(rgb(1,0,0,.5),rgb(0,1,0,.5), rgb(0,0,1,.5)), 
+        border = "black", horizontal = FALSE, notch = FALSE )
+  points(x = rnorm(length(low), mean = 1, sd = .1), y = low)
+  points(x = rnorm(length(mid), mean = 3, sd = .1), y = mid)
+  points(x = rnorm(length(high), mean = 5, sd = .1), y = high)
+
+d.50 <- abs(angle.frame[which(dbvals == 50)])
+d.55 <- abs(angle.frame[which(dbvals == 55)])
+d.60 <- abs(angle.frame[which(dbvals == 60)])
+d.65 <- abs(angle.frame[which(dbvals == 65)])
+d.70 <- abs(angle.frame[which(dbvals == 70)])
+d.75 <- abs(angle.frame[which(dbvals == 75)])
+d.80 <- abs(angle.frame[which(dbvals == 80)])
+d.85 <- abs(angle.frame[which(dbvals == 85)])
+d.90 <- abs(angle.frame[which(dbvals == 90)])
+
+par(mgp=c(2.5,0.9,0))
+boxplot(d.50, d.55, d.60, d.65, d.70, d.75, d.80, d.85, d.90, at = c(1,3,5,7,9,11,13,15,17),
+        ylab = expression(paste("Angle Measure (",degree, ")")), cex.lab = 1.5, cex.axis = 1.2,
+        names = c("50 dB", "55 dB", "60 dB","65 dB", "70 dB", "75 dB", "80 dB", "85 dB", "90 dB"), las = 0, 
+        col = c(rgb(1,0,0,.5),rgb(0,1,0,.5), rgb(0,0,1,.5),rgb(1,0,0,.5),rgb(0,1,0,.5), rgb(0,0,1,.5),rgb(1,0,0,.5),rgb(0,1,0,.5), rgb(0,0,1,.5)), 
+        border = "black", horizontal = FALSE, notch = FALSE )
+  points(x = rnorm(length(d.50), mean = 1, sd = .1), y = d.50)
+  points(x = rnorm(length(d.55), mean = 3, sd = .1), y = d.55)
+  points(x = rnorm(length(d.60), mean = 5, sd = .1), y = d.60)
+  points(x = rnorm(length(d.65), mean = 7, sd = .1), y = d.65)
+  points(x = rnorm(length(d.70), mean = 9, sd = .1), y = d.70)
+  points(x = rnorm(length(d.75), mean = 11, sd = .1), y = d.75)
+  points(x = rnorm(length(d.80), mean = 13, sd = .1), y = d.80)
+  points(x = rnorm(length(d.85), mean = 15, sd = .1), y = d.85)
+  points(x = rnorm(length(d.90), mean = 17, sd = .1), y = d.90)
+
+
+
+
+pdf('Figures/191009_190708_ALTPlots.pdf', width=30,height=20)
+par(mfrow = c(9,1), mar = c(.5,5,.5,.5), oma = c(8,2,4,24))
+plot(1:frame_len, ss_x, type = "l", xlab = "Frame Number", ylab = "Sound", col = "midnightblue", cex = 1.5, cex.lab = 2, cex.axis = 2)
+plot(shots, angle.frame, type = "l", xlab = "",ylab = "Angle Measurement", col = "mediumorchid4", cex = 1.5, cex.lab = 2, cex.axis = 1)
+plot(x=seq(7:(frame_len - 5)), abs(angle.data[(7:(N-5)),3]), xlab = "Time", ylab = "|Angle Velocity|", ylim = c(0,3.5), type='l', cex = 1.5, cex.lab = 2, cex.axis = 1) # smooth derivative
+par(new=TRUE)
+plot(shots,bodyshot.twitch, type = "l", xaxt = "n",yaxt = "n", xlab="", ylab="", col = "blue", cex = 1.5, cex.lab = 2, cex.axis = 1)
+axis(side=4)
+par(new=FALSE)
+plot(x=seq(7:(frame_len - 5)), abs(angle.data[(7:(N-5)),5]), xlab = "Time", ylab = "|Angle Acceleration|", type='l', cex = 1.5, cex.lab = 2, cex.axis = 1) # smooth Second derivative
+
+plot(shots,lowerrightshot.twitch, type = "l", xlab = "", ylab = "Unnormalized Twitch", col = "red3", cex = 1.5, cex.lab=2, cex.axis = 1)
+points(shots,lowerleftshot.twitch, type = "l", xlab = "", ylab = "Lower Left Twitch", col = "gold2", cex = 1.5, cex.axis = 1)
+points(shots,upperrightshot.twitch, type = "l", xlab = "", ylab = "Upper Right Twitch", col = "darkorange2", cex = 1.5, cex.axis = 1)
+points(shots,upperleftshot.twitch , type = "l", xlab = "", ylab = "Upper Left Twitch", col = "lime green", cex = 1.5, cex.axis = 1)
+plot(shots,bodyshot.twitch/max(bodyshot.twitch), type = "l", xlab = "", ylab = "Normalized Twitch", col = "blue", cex = 1.5, cex.lab = 2, cex.axis = 1)
+points(shots,upperleftshot.twitch/max(upperleftshot.twitch), type = "l", xlab = "", ylab = "Upper Left Twitch", col = "lime green", cex = 1.5, cex.axis = 1)
+points(shots,lowerleftshot.twitch/max(lowerleftshot.twitch), type = "l", xlab = "", ylab = "Lower Left Twitch", col = "gold2", cex = 1.5, cex.axis = 1)
+points(shots,upperrightshot.twitch/max(upperrightshot.twitch), type = "l", xlab = "", ylab = "Upper Right Twitch", col = "darkorange2", cex = 1.5, cex.axis = 1)
+points(shots,lowerrightshot.twitch/max(lowerrightshot.twitch), type = "l", xlab = "", ylab = "Lower Right Twitch", col = "red3", cex = 1.5, cex.axis = 1)
+#legend("right", xpd = TRUE, cex=1.7, pch=1, pt.cex = 1, legend = c("Body Twitch", "Upper Left Twitch", "Lower Left Twitch", "Upper Right Twitch", "Lower Right Twitch"), col = c("blue", "limegreen", "gold2", "darkorange2", "red3"),lty=1:1, lwd=4)
+plot(shots,bodyshot.twitch.ad, type = "l", xlab = "", ylab = "Proportional Twitch", col = "blue", cex = 1.5, cex.lab = 2, cex.axis = 1)
+points(shots,upperleftshot.twitch.ad, type = "l", xlab = "", ylab = "Upper Left Twitch", col = "lime green", cex = 1.5, cex.axis = 1)
+points(shots,lowerleftshot.twitch.ad, type = "l", xlab = "", ylab = "Lower Left Twitch", col = "gold2", cex = 1.5, cex.axis = 1)
+points(shots,upperrightshot.twitch.ad, type = "l", xlab = "", ylab = "Upper Right Twitch", col = "darkorange2", cex = 1.5, cex.axis = 1)
+points(shots,lowerrightshot.twitch.ad, type = "l", xlab = "", ylab = "Lower Right Twitch", col = "red3", cex = 1.5, cex.axis = 1)
+#barplot(as.matrix(final_df), col = c("blue", "limegreen", "gold2", "darkorange2", "red3"), xlab = "Shots", ylab= "Twitch Proportion", legend.text = TRUE, args.legend = list(x = "topright", bty = "n",inset=c(-0.7, 0)))
+
+plot(shots, average.twitch, type = "l", xlab = "", ylab = "Average Twitch", cex = 1.5, cex.lab = 2, cex.axis = 1)
+plot(viz_a_x[14,],viz_a_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "black",pch = 16, cex = 1.5, cex.lab = 2, cex.axis = 1, ylab = "Configurations")
+points(viz_w_x[14,],viz_w_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "blue",pch = 16, cex = 1.5, cex.axis = 1)
+points(viz_ul_x[14,],viz_ul_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "lime green",pch = 16, cex = 1.5, cex.axis = 1)
+points(viz_ll_x[14,],viz_ll_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "gold2",pch = 16, cex = 1.5, cex.axis = 1)
+points(viz_ur_x[14,],viz_ur_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "darkorange2",pch = 16, cex = 1.5, cex.axis = 1)
+points(viz_lr_x[14,],viz_lr_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "red3",pch = 16, cex = 1.5, cex.axis = 1)
+for(j in 1:len)
+{
+  segments(viz_a_x[14,j], viz_a_y[14,j], viz_w_x[14,j],  viz_w_y[14,j], col = "grey", lwd = 2)
+  segments(viz_a_x[14,j], viz_a_y[14,j], viz_ul_x[14,j], viz_ul_y[14,j], col = "grey", lwd = 2)
+  segments(viz_a_x[14,j], viz_a_y[14,j], viz_ur_x[14,j], viz_ur_y[14,j], col = "grey", lwd = 2)
+  segments(viz_ul_x[14,j], viz_ul_y[14,j], viz_ll_x[14,j], viz_ll_y[14,j], col = "grey", lwd = 2)
+  segments(viz_ur_x[14,j], viz_ur_y[14,j], viz_lr_x[14,j], viz_lr_y[14,j], col = "grey", lwd = 2)
+}
+title(main = "191009_190708_ALT Graphs", sub = "Frame Number",cex.sub = 2.5,outer = TRUE, cex.main = 3)
+par(fig = c(0, 1, 0, 1), oma = c(0, 0, 0, 0), mar = c(0, 0, 0, 0), new = TRUE)
+plot(0, 0, type = "n", bty = "n", xaxt = "n", yaxt = "n")
+legend("right", c("Body Twitch", "Upper Left Twitch", "Lower Left Twitch", "Upper Right Twitch", "Lower Right Twitch"), xpd = TRUE, horiz = FALSE, inset = c(0.007,0
+), bty = "n", pch = 1, col = c("blue", "limegreen", "gold2", "darkorange2", "red3"), cex = 2, y.intersp = 5,lty=1:1, lwd=4)
 # xpd = TRUE tells R that it is OK to plot outside the region horiz = TRUE
 # tells R that I want a horizontal legend inset = c(x,y) tells R how to move
 # the legend relative to the 'bottom' location bty = 'n' means that 'no' box
 # will be drawn around it pch and col are the types and colors of points cex
 # = 2 makes the legend twice as large as other fonts
-# dev.off()
+dev.off()
