@@ -320,7 +320,7 @@ num.frames <- 12
 angle.frame <- rep(0, frame_len/num.frames)
 for(i in seq(0, T, num.frames))
 {
-   angle.frame[i/num.frames] <- mean(angles[i:i+num.frames-1])  
+  angle.frame[i/num.frames] <- mean(angles[i:i+num.frames-1])  
 }
 
 frames <- seq(1:frame_len)
@@ -649,6 +649,34 @@ for(i in 7:(N-5))
   
 }
 
+
+plot(ab_x, ab_y, col = "navy", xlim = c(0, 1000), ylim = c(800, 0), pch = 1, cex = 0.75,
+     xlab = "X position in pixels", ylab = "Y position in pixels", cex.lab = 1.5, cex.axis = 1.2)
+points(wax_x, wax_y, col = "blue", cex = 0.75)
+points(left_knee_x, left_knee_y, col="lightgreen", cex = 0.75)
+points(right_knee_x, right_knee_y, col = "orangered", cex = 0.75)
+points(left_foot_x, left_foot_y, col = "gold", cex = 0.75)
+points(right_foot_x, right_foot_y, col = "brown", cex = 0.75)
+
+plot(1:frame_len, ab_x, type = 'l', lty = 2, col = "navy", ylim = c(0, 1000), xlab = "Frame Index",
+     ylab = 'X-(dashed) and Y-(solid) position in pixels', cex.lab = 1.15, cex.axis = 1.1)
+points(1:frame_len, ab_y, type = 'l', col = 'navy')
+points(1:frame_len, wax_x, type = 'l', lty = 2, col = 'blue')
+points(1:frame_len, wax_y, type = 'l', col = 'blue')
+points(1:frame_len, left_knee_x, type = 'l', lty = 2, col = 'lightgreen')
+points(1:frame_len, left_knee_y, type = 'l', col = 'lightgreen')
+points(1:frame_len, right_knee_x, type = 'l', lty = 2, col = 'orangered')
+points(1:frame_len, right_knee_y, type = 'l', col = 'orangered')
+points(1:frame_len, left_foot_x, type = 'l', lty =2, col = 'gold')
+points(1:frame_len, left_foot_y, type = 'l', col = 'gold')
+points(1:frame_len, right_foot_x, type = 'l', lty = 2, col = 'brown')
+points(1:frame_len, right_foot_y, type = 'l', col = 'brown')
+
+
+
+
+
+
 ## Boxplot Visualization of Response ##
 dbvals <- rep(0, length(shots))
 
@@ -680,9 +708,9 @@ boxplot(low, mid, high, at = c(1,3,5),
         names = c("50-60 dB" , "65-75 dB", "80-90 dB"), las = 0, 
         col = c(rgb(1,0,0,.5),rgb(0,1,0,.5), rgb(0,0,1,.5)), 
         border = "black", horizontal = FALSE, notch = FALSE )
-  points(x = rnorm(length(low), mean = 1, sd = .1), y = low)
-  points(x = rnorm(length(mid), mean = 3, sd = .1), y = mid)
-  points(x = rnorm(length(high), mean = 5, sd = .1), y = high)
+points(x = rnorm(length(low), mean = 1, sd = .1), y = low)
+points(x = rnorm(length(mid), mean = 3, sd = .1), y = mid)
+points(x = rnorm(length(high), mean = 5, sd = .1), y = high)
 
 d.50 <- abs(angle.frame[which(dbvals == 50)])
 d.55 <- abs(angle.frame[which(dbvals == 55)])
@@ -700,15 +728,15 @@ boxplot(d.50, d.55, d.60, d.65, d.70, d.75, d.80, d.85, d.90, at = c(1,3,5,7,9,1
         names = c("50 dB", "55 dB", "60 dB","65 dB", "70 dB", "75 dB", "80 dB", "85 dB", "90 dB"), las = 0, 
         col = c(rgb(1,0,0,.5),rgb(0,1,0,.5), rgb(0,0,1,.5),rgb(1,0,0,.5),rgb(0,1,0,.5), rgb(0,0,1,.5),rgb(1,0,0,.5),rgb(0,1,0,.5), rgb(0,0,1,.5)), 
         border = "black", horizontal = FALSE, notch = FALSE )
-  points(x = rnorm(length(d.50), mean = 1, sd = .1), y = d.50)
-  points(x = rnorm(length(d.55), mean = 3, sd = .1), y = d.55)
-  points(x = rnorm(length(d.60), mean = 5, sd = .1), y = d.60)
-  points(x = rnorm(length(d.65), mean = 7, sd = .1), y = d.65)
-  points(x = rnorm(length(d.70), mean = 9, sd = .1), y = d.70)
-  points(x = rnorm(length(d.75), mean = 11, sd = .1), y = d.75)
-  points(x = rnorm(length(d.80), mean = 13, sd = .1), y = d.80)
-  points(x = rnorm(length(d.85), mean = 15, sd = .1), y = d.85)
-  points(x = rnorm(length(d.90), mean = 17, sd = .1), y = d.90)
+points(x = rnorm(length(d.50), mean = 1, sd = .1), y = d.50)
+points(x = rnorm(length(d.55), mean = 3, sd = .1), y = d.55)
+points(x = rnorm(length(d.60), mean = 5, sd = .1), y = d.60)
+points(x = rnorm(length(d.65), mean = 7, sd = .1), y = d.65)
+points(x = rnorm(length(d.70), mean = 9, sd = .1), y = d.70)
+points(x = rnorm(length(d.75), mean = 11, sd = .1), y = d.75)
+points(x = rnorm(length(d.80), mean = 13, sd = .1), y = d.80)
+points(x = rnorm(length(d.85), mean = 15, sd = .1), y = d.85)
+points(x = rnorm(length(d.90), mean = 17, sd = .1), y = d.90)
 
 
 
