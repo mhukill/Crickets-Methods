@@ -650,19 +650,69 @@ for(i in 7:(N-5))
 }
 
 
-plot(ab_x, ab_y, col = "navy", xlim = c(0, 1000), ylim = c(800, 0), pch = 1, cex = 0.75,
-     xlab = "X position in pixels", ylab = "Y position in pixels", cex.lab = 1.5, cex.axis = 1.2)
-points(wax_x, wax_y, col = "blue", cex = 0.75)
-points(left_knee_x, left_knee_y, col="lightgreen", cex = 0.75)
-points(right_knee_x, right_knee_y, col = "orangered", cex = 0.75)
-points(left_foot_x, left_foot_y, col = "gold", cex = 0.75)
-points(right_foot_x, right_foot_y, col = "brown", cex = 0.75)
+# plot(ab_x, ab_y, col = "navy", xlim = c(0, 1000), ylim = c(800, 0), pch = 1, cex = 0.75,
+#      xlab = "X position in pixels", ylab = "Y position in pixels", cex.lab = 1.5, cex.axis = 1.2)
+# points(wax_x, wax_y, col = "blue", cex = 0.75)
+# points(left_knee_x, left_knee_y, col="lightgreen", cex = 0.75)
+# points(right_knee_x, right_knee_y, col = "orangered", cex = 0.75)
+# points(left_foot_x, left_foot_y, col = "gold", cex = 0.75)
+# points(right_foot_x, right_foot_y, col = "brown", cex = 0.75)
 
-plot(1:frame_len, ab_x, type = 'l', lty = 2, col = "navy", ylim = c(0, 1000), xlab = "Frame Index",
-     ylab = 'X-(dashed) and Y-(solid) position in pixels', cex.lab = 1.15, cex.axis = 1.1)
+
+par(mfrow=c(2,1))
+
+par(mai=c(1.02,0.82,0.82,1.92), xpd=TRUE)
+
+plot(1:frame_len, ab_x, type = 'l', lty = 2, col = "navy", ylim = c(500, 850), xlab = "Frame Index",
+     ylab = 'X-position in pixels', cex.lab = 1.15, cex.axis = 1.1)
+#points(1:frame_len, ab_y, type = 'l', col = 'navy')
+#points(1:frame_len, wax_x, type = 'l', lty = 2, col = 'blue')
+#points(1:frame_len, wax_y, type = 'l', col = 'blue')
+points(1:frame_len, left_knee_x, type = 'l', lty = 2, col = 'lightgreen')
+#points(1:frame_len, left_knee_y, type = 'l', col = 'lightgreen')
+points(1:frame_len, right_knee_x, type = 'l', lty = 2, col = 'orangered')
+#points(1:frame_len, right_knee_y, type = 'l', col = 'orangered')
+points(1:frame_len, left_foot_x, type = 'l', lty =2, col = 'gold')
+#points(1:frame_len, left_foot_y, type = 'l', col = 'gold')
+points(1:frame_len, right_foot_x, type = 'l', lty = 2, col = 'brown')
+#points(1:frame_len, right_foot_y, type = 'l', col = 'brown')
+
+legend(5600, 905, legend=c("Abdomen X", "Left Knee X", "Right Knee x", "Left Foot X", "Right Foot X"),
+       col=c("navy",  "lightgreen",  "orangered",  "gold", "brown"),
+       lty=c(1, 1, 1, 1, 1), cex=.95,
+       title="Body Part Color", text.font =3)
+
+
+par(mai=c(1.02,0.82,0.82,1.92), xpd=TRUE)
+
+plot(1:frame_len, ab_y, type = 'l', lty = 2, col = "navy", ylim = c(350, 650), xlab = "Frame Index",
+     ylab = 'Y-position in pixels', cex.lab = 1.15, cex.axis = 1.1)
+#points(1:frame_len, ab_y, type = 'l', col = 'navy')
+#points(1:frame_len, wax_x, type = 'l', lty = 2, col = 'blue')
+#points(1:frame_len, wax_y, type = 'l', col = 'blue')
+#points(1:frame_len, left_knee_x, type = 'l', lty = 2, col = 'lightgreen')
+points(1:frame_len, left_knee_y, type = 'l', col = 'lightgreen')
+#points(1:frame_len, right_knee_x, type = 'l', lty = 2, col = 'orangered')
+points(1:frame_len, right_knee_y, type = 'l', col = 'orangered')
+#points(1:frame_len, left_foot_x, type = 'l', lty =2, col = 'gold')
+points(1:frame_len, left_foot_y, type = 'l', col = 'gold')
+#points(1:frame_len, right_foot_x, type = 'l', lty = 2, col = 'brown')
+points(1:frame_len, right_foot_y, type = 'l', col = 'brown')
+
+legend(5600, 720, legend=c("Abdomen Y", "Left Knee Y", "Right Knee Y","Left Foot Y", "Right Foot Y"),
+       col=c("navy", "lightgreen", "orangered", "gold", "brown"),
+       lty=c( 2, 2,  2, 2, 2), cex=.95,
+       title="Body Part Color", text.font =3)
+
+
+
+par(mai=c(1.02,0.82,0.82,1.92), xpd=TRUE)
+
+plot(1:frame_len, ab_x, type = 'l', lty = 2, col = "navy", ylim = c(350, 850), xlab = "Frame Index",
+     ylab = 'X- and Y-position in pixels', cex.lab = 1.15, cex.axis = 1.1)
 points(1:frame_len, ab_y, type = 'l', col = 'navy')
-points(1:frame_len, wax_x, type = 'l', lty = 2, col = 'blue')
-points(1:frame_len, wax_y, type = 'l', col = 'blue')
+#points(1:frame_len, wax_x, type = 'l', lty = 2, col = 'blue')
+#points(1:frame_len, wax_y, type = 'l', col = 'blue')
 points(1:frame_len, left_knee_x, type = 'l', lty = 2, col = 'lightgreen')
 points(1:frame_len, left_knee_y, type = 'l', col = 'lightgreen')
 points(1:frame_len, right_knee_x, type = 'l', lty = 2, col = 'orangered')
@@ -671,6 +721,13 @@ points(1:frame_len, left_foot_x, type = 'l', lty =2, col = 'gold')
 points(1:frame_len, left_foot_y, type = 'l', col = 'gold')
 points(1:frame_len, right_foot_x, type = 'l', lty = 2, col = 'brown')
 points(1:frame_len, right_foot_y, type = 'l', col = 'brown')
+par(fig = c(0, 1, 0, 1), oma = c(0, 0, 0, 0), mar = c(0, 0, 0, 0), new = TRUE)
+legend(5600, 730, legend=c("Abdomen X", "Abdomen Y", "Left Knee X", "Left Knee Y", "Right Knee x", "Right Knee Y",
+                           "Left Foot X", "Left Foot Y", "Right Foot X", "Right Foot Y"),
+       col=c("navy", "navy", "lightgreen", "lightgreen", "orangered", "orangered", "gold", "gold", "brown", "brown"),
+       lty=c(1, 2, 1, 2, 1, 2, 1, 2, 1, 2), cex=1.05,
+       title="Body Part Color", text.font =3)
+
 
 
 
@@ -742,53 +799,56 @@ points(x = rnorm(length(d.90), mean = 17, sd = .1), y = d.90)
 
 
 pdf('Figures/191009_190708_ALTPlots.pdf', width=30,height=20)
-par(mfrow = c(9,1), mar = c(.5,5,.5,.5), oma = c(8,2,4,24))
-plot(1:frame_len, ss_x, type = "l", xlab = "Frame Number", ylab = "Sound", col = "midnightblue", cex = 1.5, cex.lab = 2, cex.axis = 2)
-plot(shots, angle.frame, type = "l", xlab = "",ylab = "Angle Measurement", col = "mediumorchid4", cex = 1.5, cex.lab = 2, cex.axis = 1)
-plot(x=seq(7:(frame_len - 5)), abs(angle.data[(7:(N-5)),3]), xlab = "Time", ylab = "|Angle Velocity|", ylim = c(0,3.5), type='l', cex = 1.5, cex.lab = 2, cex.axis = 1) # smooth derivative
-par(new=TRUE)
-plot(shots,bodyshot.twitch, type = "l", xaxt = "n",yaxt = "n", xlab="", ylab="", col = "blue", cex = 1.5, cex.lab = 2, cex.axis = 1)
-axis(side=4)
-par(new=FALSE)
-plot(x=seq(7:(frame_len - 5)), abs(angle.data[(7:(N-5)),5]), xlab = "Time", ylab = "|Angle Acceleration|", type='l', cex = 1.5, cex.lab = 2, cex.axis = 1) # smooth Second derivative
-
-plot(shots,lowerrightshot.twitch, type = "l", xlab = "", ylab = "Unnormalized Twitch", col = "red3", cex = 1.5, cex.lab=2, cex.axis = 1)
-points(shots,lowerleftshot.twitch, type = "l", xlab = "", ylab = "Lower Left Twitch", col = "gold2", cex = 1.5, cex.axis = 1)
-points(shots,upperrightshot.twitch, type = "l", xlab = "", ylab = "Upper Right Twitch", col = "darkorange2", cex = 1.5, cex.axis = 1)
-points(shots,upperleftshot.twitch , type = "l", xlab = "", ylab = "Upper Left Twitch", col = "lime green", cex = 1.5, cex.axis = 1)
-plot(shots,bodyshot.twitch/max(bodyshot.twitch), type = "l", xlab = "", ylab = "Normalized Twitch", col = "blue", cex = 1.5, cex.lab = 2, cex.axis = 1)
-points(shots,upperleftshot.twitch/max(upperleftshot.twitch), type = "l", xlab = "", ylab = "Upper Left Twitch", col = "lime green", cex = 1.5, cex.axis = 1)
-points(shots,lowerleftshot.twitch/max(lowerleftshot.twitch), type = "l", xlab = "", ylab = "Lower Left Twitch", col = "gold2", cex = 1.5, cex.axis = 1)
-points(shots,upperrightshot.twitch/max(upperrightshot.twitch), type = "l", xlab = "", ylab = "Upper Right Twitch", col = "darkorange2", cex = 1.5, cex.axis = 1)
-points(shots,lowerrightshot.twitch/max(lowerrightshot.twitch), type = "l", xlab = "", ylab = "Lower Right Twitch", col = "red3", cex = 1.5, cex.axis = 1)
-#legend("right", xpd = TRUE, cex=1.7, pch=1, pt.cex = 1, legend = c("Body Twitch", "Upper Left Twitch", "Lower Left Twitch", "Upper Right Twitch", "Lower Right Twitch"), col = c("blue", "limegreen", "gold2", "darkorange2", "red3"),lty=1:1, lwd=4)
-plot(shots,bodyshot.twitch.ad, type = "l", xlab = "", ylab = "Proportional Twitch", col = "blue", cex = 1.5, cex.lab = 2, cex.axis = 1)
-points(shots,upperleftshot.twitch.ad, type = "l", xlab = "", ylab = "Upper Left Twitch", col = "lime green", cex = 1.5, cex.axis = 1)
-points(shots,lowerleftshot.twitch.ad, type = "l", xlab = "", ylab = "Lower Left Twitch", col = "gold2", cex = 1.5, cex.axis = 1)
-points(shots,upperrightshot.twitch.ad, type = "l", xlab = "", ylab = "Upper Right Twitch", col = "darkorange2", cex = 1.5, cex.axis = 1)
-points(shots,lowerrightshot.twitch.ad, type = "l", xlab = "", ylab = "Lower Right Twitch", col = "red3", cex = 1.5, cex.axis = 1)
-#barplot(as.matrix(final_df), col = c("blue", "limegreen", "gold2", "darkorange2", "red3"), xlab = "Shots", ylab= "Twitch Proportion", legend.text = TRUE, args.legend = list(x = "topright", bty = "n",inset=c(-0.7, 0)))
-
-plot(shots, average.twitch, type = "l", xlab = "", ylab = "Average Twitch", cex = 1.5, cex.lab = 2, cex.axis = 1)
-plot(viz_a_x[14,],viz_a_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "black",pch = 16, cex = 1.5, cex.lab = 2, cex.axis = 1, ylab = "Configurations")
-points(viz_w_x[14,],viz_w_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "blue",pch = 16, cex = 1.5, cex.axis = 1)
-points(viz_ul_x[14,],viz_ul_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "lime green",pch = 16, cex = 1.5, cex.axis = 1)
-points(viz_ll_x[14,],viz_ll_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "gold2",pch = 16, cex = 1.5, cex.axis = 1)
-points(viz_ur_x[14,],viz_ur_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "darkorange2",pch = 16, cex = 1.5, cex.axis = 1)
-points(viz_lr_x[14,],viz_lr_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "red3",pch = 16, cex = 1.5, cex.axis = 1)
+par(mfrow = c(4,1), mar = c(5,5,.5,.5), oma = c(8,2,4,24))
+plot(viz_a_x[14,],viz_a_y[14,], xlab = '', xlim = c(0, frame_len), ylim=c(-800,-100), col = "black",pch = 16, cex = 2.2, cex.lab = 3, cex.axis = 1.5, ylab = "Conformation", xaxt = 'n')
+points(viz_w_x[14,],viz_w_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "blue",pch = 16, cex = 2.2, cex.axis = 1)
+points(viz_ul_x[14,],viz_ul_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "lime green",pch = 16, cex = 2.2, cex.axis = 1)
+points(viz_ll_x[14,],viz_ll_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "gold2",pch = 16, cex = 2.2, cex.axis = 1)
+points(viz_ur_x[14,],viz_ur_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "darkorange2",pch = 16, cex = 2.2, cex.axis = 1)
+points(viz_lr_x[14,],viz_lr_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "red3",pch = 16, cex = 2.2, cex.axis = 1)
 for(j in 1:len)
 {
-  segments(viz_a_x[14,j], viz_a_y[14,j], viz_w_x[14,j],  viz_w_y[14,j], col = "grey", lwd = 2)
-  segments(viz_a_x[14,j], viz_a_y[14,j], viz_ul_x[14,j], viz_ul_y[14,j], col = "grey", lwd = 2)
-  segments(viz_a_x[14,j], viz_a_y[14,j], viz_ur_x[14,j], viz_ur_y[14,j], col = "grey", lwd = 2)
-  segments(viz_ul_x[14,j], viz_ul_y[14,j], viz_ll_x[14,j], viz_ll_y[14,j], col = "grey", lwd = 2)
-  segments(viz_ur_x[14,j], viz_ur_y[14,j], viz_lr_x[14,j], viz_lr_y[14,j], col = "grey", lwd = 2)
+  segments(viz_a_x[14,j], viz_a_y[14,j], viz_w_x[14,j],  viz_w_y[14,j], col = "grey", lwd = 4)
+  segments(viz_a_x[14,j], viz_a_y[14,j], viz_ul_x[14,j], viz_ul_y[14,j], col = "grey", lwd = 4)
+  segments(viz_a_x[14,j], viz_a_y[14,j], viz_ur_x[14,j], viz_ur_y[14,j], col = "grey", lwd = 4)
+  segments(viz_ul_x[14,j], viz_ul_y[14,j], viz_ll_x[14,j], viz_ll_y[14,j], col = "grey", lwd = 4)
+  segments(viz_ur_x[14,j], viz_ur_y[14,j], viz_lr_x[14,j], viz_lr_y[14,j], col = "grey", lwd = 4)
 }
-title(main = "191009_190708_ALT Graphs", sub = "Frame Number",cex.sub = 2.5,outer = TRUE, cex.main = 3)
-par(fig = c(0, 1, 0, 1), oma = c(0, 0, 0, 0), mar = c(0, 0, 0, 0), new = TRUE)
-plot(0, 0, type = "n", bty = "n", xaxt = "n", yaxt = "n")
-legend("right", c("Body Twitch", "Upper Left Twitch", "Lower Left Twitch", "Upper Right Twitch", "Lower Right Twitch"), xpd = TRUE, horiz = FALSE, inset = c(0.007,0
-), bty = "n", pch = 1, col = c("blue", "limegreen", "gold2", "darkorange2", "red3"), cex = 2, y.intersp = 5,lty=1:1, lwd=4)
+plot(shots,lowerrightshot.twitch, xaxt = 'n', type = "l", xlab = "", ylab = "Twitch", lwd = 4, col = rgb(205/255, 0, 0, 0.6), cex = 1.5, cex.lab=3, cex.axis = 1)
+points(shots,bodyshot.twitch, type = "l", xlab="", ylab="", col = rgb(0, 0, 1, 0.6), cex = 1.5,  cex.axis = 1, lwd = 4)
+points(shots,lowerleftshot.twitch, type = "l", xlab = "", ylab = "Lower Left Twitch", col = rgb(238/255, 201/255, 0, 0.6), cex = 1.5, cex.axis = 1, lwd = 4)
+points(shots,upperrightshot.twitch, type = "l", xlab = "", ylab = "Upper Right Twitch", col = rgb(238/255, 118/255, 0, 0.6), cex = 1.5, cex.axis = 1, lwd = 4)
+points(shots,upperleftshot.twitch , type = "l", xlab = "", ylab = "Upper Left Twitch", col = rgb(50/255, 205/255, 50/255, 0.6), cex = 1.5, cex.axis = 1, lwd = 4)
+plot(shots, angle.frame, xaxt = 'n', type = "l", xlab = "",ylab = "Angle Measurement", col = "mediumorchid4", cex = 1.5, cex.lab = 3, cex.axis = 1, lwd = 4)
+plot(1:frame_len, ss_x,  type = "l", xlab = "Frame Number", ylab = "Sound", col = "midnightblue", cex = 1.5, cex.lab = 3, cex.axis = 2)
+
+# plot(x=seq(7:(frame_len - 5)), abs(angle.data[(7:(N-5)),3]), xlab = "Time", ylab = "|Angle Velocity|", ylim = c(0,3.5), type='l', cex = 1.5, cex.lab = 2, cex.axis = 1) # smooth derivative
+# par(new=TRUE)
+# axis(side=4)
+# par(new=FALSE)
+# plot(x=seq(7:(frame_len - 5)), abs(angle.data[(7:(N-5)),5]), xlab = "Time", ylab = "|Angle Acceleration|", type='l', cex = 1.5, cex.lab = 2, cex.axis = 1) # smooth Second derivative
+
+
+# plot(shots,bodyshot.twitch/max(bodyshot.twitch), type = "l", xlab = "", ylab = "Normalized Twitch", col = "blue", cex = 1.5, cex.lab = 2, cex.axis = 1)
+# points(shots,upperleftshot.twitch/max(upperleftshot.twitch), type = "l", xlab = "", ylab = "Upper Left Twitch", col = "lime green", cex = 1.5, cex.axis = 1)
+# points(shots,lowerleftshot.twitch/max(lowerleftshot.twitch), type = "l", xlab = "", ylab = "Lower Left Twitch", col = "gold2", cex = 1.5, cex.axis = 1)
+# points(shots,upperrightshot.twitch/max(upperrightshot.twitch), type = "l", xlab = "", ylab = "Upper Right Twitch", col = "darkorange2", cex = 1.5, cex.axis = 1)
+# points(shots,lowerrightshot.twitch/max(lowerrightshot.twitch), type = "l", xlab = "", ylab = "Lower Right Twitch", col = "red3", cex = 1.5, cex.axis = 1)
+#legend("right", xpd = TRUE, cex=1.7, pch=1, pt.cex = 1, legend = c("Body Twitch", "Upper Left Twitch", "Lower Left Twitch", "Upper Right Twitch", "Lower Right Twitch"), col = c("blue", "limegreen", "gold2", "darkorange2", "red3"),lty=1:1, lwd=4)
+# plot(shots,bodyshot.twitch.ad, type = "l", xlab = "", ylab = "Proportional Twitch", col = "blue", cex = 1.5, cex.lab = 2, cex.axis = 1)
+# points(shots,upperleftshot.twitch.ad, type = "l", xlab = "", ylab = "Upper Left Twitch", col = "lime green", cex = 1.5, cex.axis = 1)
+# points(shots,lowerleftshot.twitch.ad, type = "l", xlab = "", ylab = "Lower Left Twitch", col = "gold2", cex = 1.5, cex.axis = 1)
+# points(shots,upperrightshot.twitch.ad, type = "l", xlab = "", ylab = "Upper Right Twitch", col = "darkorange2", cex = 1.5, cex.axis = 1)
+# points(shots,lowerrightshot.twitch.ad, type = "l", xlab = "", ylab = "Lower Right Twitch", col = "red3", cex = 1.5, cex.axis = 1)
+#barplot(as.matrix(final_df), col = c("blue", "limegreen", "gold2", "darkorange2", "red3"), xlab = "Shots", ylab= "Twitch Proportion", legend.text = TRUE, args.legend = list(x = "topright", bty = "n",inset=c(-0.7, 0)))
+
+# plot(shots, average.twitch, type = "l", xlab = "", ylab = "Average Twitch", cex = 1.5, cex.lab = 2, cex.axis = 1)
+
+#title(main = "191009_190708_ALT Graphs", sub = "Frame Number",cex.sub = 2.5,outer = TRUE, cex.main = 3)
+# par(fig = c(0, 1, 0, 1), oma = c(0, 0, 0, 0), mar = c(0, 0, 0, 0), new = TRUE)
+# plot(0, 0, type = "n", bty = "n", xaxt = "n", yaxt = "n")
+# legend("right", c("Body Twitch", "Upper Left Twitch", "Lower Left Twitch", "Upper Right Twitch", "Lower Right Twitch"), xpd = TRUE, horiz = FALSE, inset = c(0.007,0
+# ), bty = "n", pch = 1, col = c("blue", "limegreen", "gold2", "darkorange2", "red3"), cex = 2, y.intersp = 5,lty=1:1, lwd=4)
 # xpd = TRUE tells R that it is OK to plot outside the region horiz = TRUE
 # tells R that I want a horizontal legend inset = c(x,y) tells R how to move
 # the legend relative to the 'bottom' location bty = 'n' means that 'no' box
