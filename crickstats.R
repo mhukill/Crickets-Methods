@@ -659,81 +659,81 @@ for(i in 7:(N-5))
 # points(right_foot_x, right_foot_y, col = "brown", cex = 0.75)
 
 
-par(mfrow=c(2,1))
+# par(mfrow=c(2,1))
+# 
+# par(mai=c(1.02,0.82,0.82,1.92), xpd=TRUE)
+# 
+# plot(1:frame_len, ab_x, type = 'l', lty = 2, col = "navy", ylim = c(500, 850), xlab = "Frame Index",
+#      ylab = 'X-position in pixels', cex.lab = 1.15, cex.axis = 1.1)
+# #points(1:frame_len, ab_y, type = 'l', col = 'navy')
+# #points(1:frame_len, wax_x, type = 'l', lty = 2, col = 'blue')
+# #points(1:frame_len, wax_y, type = 'l', col = 'blue')
+# points(1:frame_len, left_knee_x, type = 'l', lty = 2, col = 'lightgreen')
+# #points(1:frame_len, left_knee_y, type = 'l', col = 'lightgreen')
+# points(1:frame_len, right_knee_x, type = 'l', lty = 2, col = 'orangered')
+# #points(1:frame_len, right_knee_y, type = 'l', col = 'orangered')
+# points(1:frame_len, left_foot_x, type = 'l', lty =2, col = 'gold')
+# #points(1:frame_len, left_foot_y, type = 'l', col = 'gold')
+# points(1:frame_len, right_foot_x, type = 'l', lty = 2, col = 'brown')
+# #points(1:frame_len, right_foot_y, type = 'l', col = 'brown')
+# 
+# legend(5600, 905, legend=c("Abdomen X", "Left Knee X", "Right Knee x", "Left Foot X", "Right Foot X"),
+#        col=c("navy",  "lightgreen",  "orangered",  "gold", "brown"),
+#        lty=c(1, 1, 1, 1, 1), cex=.95,
+#        title="Body Part Color", text.font =3)
+# 
+# 
+# par(mai=c(1.02,0.82,0.82,1.92), xpd=TRUE)
+# 
+# plot(1:frame_len, ab_y, type = 'l', lty = 2, col = "navy", ylim = c(350, 650), xlab = "Frame Index",
+#      ylab = 'Y-position in pixels', cex.lab = 1.15, cex.axis = 1.1)
+# #points(1:frame_len, ab_y, type = 'l', col = 'navy')
+# #points(1:frame_len, wax_x, type = 'l', lty = 2, col = 'blue')
+# #points(1:frame_len, wax_y, type = 'l', col = 'blue')
+# #points(1:frame_len, left_knee_x, type = 'l', lty = 2, col = 'lightgreen')
+# points(1:frame_len, left_knee_y, type = 'l', col = 'lightgreen')
+# #points(1:frame_len, right_knee_x, type = 'l', lty = 2, col = 'orangered')
+# points(1:frame_len, right_knee_y, type = 'l', col = 'orangered')
+# #points(1:frame_len, left_foot_x, type = 'l', lty =2, col = 'gold')
+# points(1:frame_len, left_foot_y, type = 'l', col = 'gold')
+# #points(1:frame_len, right_foot_x, type = 'l', lty = 2, col = 'brown')
+# points(1:frame_len, right_foot_y, type = 'l', col = 'brown')
+# 
+# legend(5600, 720, legend=c("Abdomen Y", "Left Knee Y", "Right Knee Y","Left Foot Y", "Right Foot Y"),
+#        col=c("navy", "lightgreen", "orangered", "gold", "brown"),
+#        lty=c( 2, 2,  2, 2, 2), cex=.95,
+#        title="Body Part Color", text.font =3)
+# 
+# 
+# 
+# par(mai=c(1.02,0.82,0.82,1.92), xpd=TRUE)
+# 
+# plot(1:frame_len, ab_x, type = 'l', lty = 2, col = "navy", ylim = c(350, 850), xlab = "Frame Index",
+#      ylab = 'X- and Y-position in pixels', cex.lab = 1.15, cex.axis = 1.1)
+# points(1:frame_len, ab_y, type = 'l', col = 'navy')
+# #points(1:frame_len, wax_x, type = 'l', lty = 2, col = 'blue')
+# #points(1:frame_len, wax_y, type = 'l', col = 'blue')
+# points(1:frame_len, left_knee_x, type = 'l', lty = 2, col = 'lightgreen')
+# points(1:frame_len, left_knee_y, type = 'l', col = 'lightgreen')
+# points(1:frame_len, right_knee_x, type = 'l', lty = 2, col = 'orangered')
+# points(1:frame_len, right_knee_y, type = 'l', col = 'orangered')
+# points(1:frame_len, left_foot_x, type = 'l', lty =2, col = 'gold')
+# points(1:frame_len, left_foot_y, type = 'l', col = 'gold')
+# points(1:frame_len, right_foot_x, type = 'l', lty = 2, col = 'brown')
+# points(1:frame_len, right_foot_y, type = 'l', col = 'brown')
+# par(fig = c(0, 1, 0, 1), oma = c(0, 0, 0, 0), mar = c(0, 0, 0, 0), new = TRUE)
+# legend(5600, 730, legend=c("Abdomen X", "Abdomen Y", "Left Knee X", "Left Knee Y", "Right Knee x", "Right Knee Y",
+#                            "Left Foot X", "Left Foot Y", "Right Foot X", "Right Foot Y"),
+#        col=c("navy", "navy", "lightgreen", "lightgreen", "orangered", "orangered", "gold", "gold", "brown", "brown"),
+#        lty=c(1, 2, 1, 2, 1, 2, 1, 2, 1, 2), cex=1.05,
+#        title="Body Part Color", text.font =3)
+# 
+# 
+# 
+# 
+# 
 
-par(mai=c(1.02,0.82,0.82,1.92), xpd=TRUE)
-
-plot(1:frame_len, ab_x, type = 'l', lty = 2, col = "navy", ylim = c(500, 850), xlab = "Frame Index",
-     ylab = 'X-position in pixels', cex.lab = 1.15, cex.axis = 1.1)
-#points(1:frame_len, ab_y, type = 'l', col = 'navy')
-#points(1:frame_len, wax_x, type = 'l', lty = 2, col = 'blue')
-#points(1:frame_len, wax_y, type = 'l', col = 'blue')
-points(1:frame_len, left_knee_x, type = 'l', lty = 2, col = 'lightgreen')
-#points(1:frame_len, left_knee_y, type = 'l', col = 'lightgreen')
-points(1:frame_len, right_knee_x, type = 'l', lty = 2, col = 'orangered')
-#points(1:frame_len, right_knee_y, type = 'l', col = 'orangered')
-points(1:frame_len, left_foot_x, type = 'l', lty =2, col = 'gold')
-#points(1:frame_len, left_foot_y, type = 'l', col = 'gold')
-points(1:frame_len, right_foot_x, type = 'l', lty = 2, col = 'brown')
-#points(1:frame_len, right_foot_y, type = 'l', col = 'brown')
-
-legend(5600, 905, legend=c("Abdomen X", "Left Knee X", "Right Knee x", "Left Foot X", "Right Foot X"),
-       col=c("navy",  "lightgreen",  "orangered",  "gold", "brown"),
-       lty=c(1, 1, 1, 1, 1), cex=.95,
-       title="Body Part Color", text.font =3)
-
-
-par(mai=c(1.02,0.82,0.82,1.92), xpd=TRUE)
-
-plot(1:frame_len, ab_y, type = 'l', lty = 2, col = "navy", ylim = c(350, 650), xlab = "Frame Index",
-     ylab = 'Y-position in pixels', cex.lab = 1.15, cex.axis = 1.1)
-#points(1:frame_len, ab_y, type = 'l', col = 'navy')
-#points(1:frame_len, wax_x, type = 'l', lty = 2, col = 'blue')
-#points(1:frame_len, wax_y, type = 'l', col = 'blue')
-#points(1:frame_len, left_knee_x, type = 'l', lty = 2, col = 'lightgreen')
-points(1:frame_len, left_knee_y, type = 'l', col = 'lightgreen')
-#points(1:frame_len, right_knee_x, type = 'l', lty = 2, col = 'orangered')
-points(1:frame_len, right_knee_y, type = 'l', col = 'orangered')
-#points(1:frame_len, left_foot_x, type = 'l', lty =2, col = 'gold')
-points(1:frame_len, left_foot_y, type = 'l', col = 'gold')
-#points(1:frame_len, right_foot_x, type = 'l', lty = 2, col = 'brown')
-points(1:frame_len, right_foot_y, type = 'l', col = 'brown')
-
-legend(5600, 720, legend=c("Abdomen Y", "Left Knee Y", "Right Knee Y","Left Foot Y", "Right Foot Y"),
-       col=c("navy", "lightgreen", "orangered", "gold", "brown"),
-       lty=c( 2, 2,  2, 2, 2), cex=.95,
-       title="Body Part Color", text.font =3)
-
-
-
-par(mai=c(1.02,0.82,0.82,1.92), xpd=TRUE)
-
-plot(1:frame_len, ab_x, type = 'l', lty = 2, col = "navy", ylim = c(350, 850), xlab = "Frame Index",
-     ylab = 'X- and Y-position in pixels', cex.lab = 1.15, cex.axis = 1.1)
-points(1:frame_len, ab_y, type = 'l', col = 'navy')
-#points(1:frame_len, wax_x, type = 'l', lty = 2, col = 'blue')
-#points(1:frame_len, wax_y, type = 'l', col = 'blue')
-points(1:frame_len, left_knee_x, type = 'l', lty = 2, col = 'lightgreen')
-points(1:frame_len, left_knee_y, type = 'l', col = 'lightgreen')
-points(1:frame_len, right_knee_x, type = 'l', lty = 2, col = 'orangered')
-points(1:frame_len, right_knee_y, type = 'l', col = 'orangered')
-points(1:frame_len, left_foot_x, type = 'l', lty =2, col = 'gold')
-points(1:frame_len, left_foot_y, type = 'l', col = 'gold')
-points(1:frame_len, right_foot_x, type = 'l', lty = 2, col = 'brown')
-points(1:frame_len, right_foot_y, type = 'l', col = 'brown')
-par(fig = c(0, 1, 0, 1), oma = c(0, 0, 0, 0), mar = c(0, 0, 0, 0), new = TRUE)
-legend(5600, 730, legend=c("Abdomen X", "Abdomen Y", "Left Knee X", "Left Knee Y", "Right Knee x", "Right Knee Y",
-                           "Left Foot X", "Left Foot Y", "Right Foot X", "Right Foot Y"),
-       col=c("navy", "navy", "lightgreen", "lightgreen", "orangered", "orangered", "gold", "gold", "brown", "brown"),
-       lty=c(1, 2, 1, 2, 1, 2, 1, 2, 1, 2), cex=1.05,
-       title="Body Part Color", text.font =3)
-
-
-
-
-
-
-
+#dev.off()
 ## Boxplot Visualization of Response ##
 dbvals <- rep(0, length(shots))
 
@@ -759,41 +759,76 @@ for(i in 1:length(shots)){
   }
 }
 
-par(mgp=c(2.5,0.9,0))
-boxplot(low, mid, high, at = c(1,3,5),
-        ylab = expression(paste("Angle Measure (",degree, ")")), xlab = "Decibel Range", cex.lab = 1.5, cex.axis = 1.2,
-        names = c("50-60 dB" , "65-75 dB", "80-90 dB"), las = 0, 
-        col = c(rgb(1,0,0,.5),rgb(0,1,0,.5), rgb(0,0,1,.5)), 
-        border = "black", horizontal = FALSE, notch = FALSE )
-points(x = rnorm(length(low), mean = 1, sd = .1), y = low)
-points(x = rnorm(length(mid), mean = 3, sd = .1), y = mid)
-points(x = rnorm(length(high), mean = 5, sd = .1), y = high)
+# par(mgp=c(2.5,0.9,0))
+# boxplot(low, mid, high, at = c(1,3,5),
+#         ylab = expression(paste("Angle Measure (",degree, ")")), xlab = "Decibel Range", cex.lab = 1.5, cex.axis = 1.2,
+#         names = c("50-60 dB" , "65-75 dB", "80-90 dB"), las = 0, 
+#         col = c(rgb(1,0,0,.5),rgb(0,1,0,.5), rgb(0,0,1,.5)), 
+#         border = "black", horizontal = FALSE, notch = FALSE )
+# points(x = rnorm(length(low), mean = 1, sd = .1), y = low)
+# points(x = rnorm(length(mid), mean = 3, sd = .1), y = mid)
+# points(x = rnorm(length(high), mean = 5, sd = .1), y = high)
 
-d.50 <- abs(angle.frame[which(dbvals == 50)])
-d.55 <- abs(angle.frame[which(dbvals == 55)])
-d.60 <- abs(angle.frame[which(dbvals == 60)])
-d.65 <- abs(angle.frame[which(dbvals == 65)])
-d.70 <- abs(angle.frame[which(dbvals == 70)])
-d.75 <- abs(angle.frame[which(dbvals == 75)])
-d.80 <- abs(angle.frame[which(dbvals == 80)])
-d.85 <- abs(angle.frame[which(dbvals == 85)])
-d.90 <- abs(angle.frame[which(dbvals == 90)])
+plot(angle.frame, average.twitch, xlab = "angle.frame", ylab = "average.twitch", xlim = c(-4, 12))
 
-par(mgp=c(2.5,0.9,0))
-boxplot(d.50, d.55, d.60, d.65, d.70, d.75, d.80, d.85, d.90, at = c(1,3,5,7,9,11,13,15,17),
-        ylab = expression(paste("Angle Measure (",degree, ")")), cex.lab = 1.5, cex.axis = 1.2,
-        names = c("50 dB", "55 dB", "60 dB","65 dB", "70 dB", "75 dB", "80 dB", "85 dB", "90 dB"), las = 0, 
-        col = c(rgb(1,0,0,.5),rgb(0,1,0,.5), rgb(0,0,1,.5),rgb(1,0,0,.5),rgb(0,1,0,.5), rgb(0,0,1,.5),rgb(1,0,0,.5),rgb(0,1,0,.5), rgb(0,0,1,.5)), 
-        border = "black", horizontal = FALSE, notch = FALSE )
-points(x = rnorm(length(d.50), mean = 1, sd = .1), y = d.50)
-points(x = rnorm(length(d.55), mean = 3, sd = .1), y = d.55)
-points(x = rnorm(length(d.60), mean = 5, sd = .1), y = d.60)
-points(x = rnorm(length(d.65), mean = 7, sd = .1), y = d.65)
-points(x = rnorm(length(d.70), mean = 9, sd = .1), y = d.70)
-points(x = rnorm(length(d.75), mean = 11, sd = .1), y = d.75)
-points(x = rnorm(length(d.80), mean = 13, sd = .1), y = d.80)
-points(x = rnorm(length(d.85), mean = 15, sd = .1), y = d.85)
-points(x = rnorm(length(d.90), mean = 17, sd = .1), y = d.90)
+d.50 <- (angle.frame[which(dbvals == 50)])
+d.50.left <- d.50[1:5]
+d.50.right <- d.50[6:11]
+
+d.55 <- (angle.frame[which(dbvals == 55)])
+d.55.left <- d.55[1:6]
+d.55.right <- d.55[7:12]
+
+
+d.60 <- (angle.frame[which(dbvals == 60)])
+d.60.left <- d.60[1:5]
+d.60.right <- d.60[6:11]
+
+d.65 <- (angle.frame[which(dbvals == 65)])
+d.65.left <- d.65[1:5]
+d.65.right <- d.65[6:10]
+
+d.70 <- (angle.frame[which(dbvals == 70)])
+d.70.left <- d.70[1:5]
+d.70.right <- d.70[6:10]
+
+d.75 <- (angle.frame[which(dbvals == 75)])
+d.75.left <- d.75[1:5]
+d.75.right <- d.75[6:10]
+
+d.80 <- (angle.frame[which(dbvals == 80)])
+d.80.left <- d.80[1:6]
+d.80.right <- d.80[7:12]
+
+d.85 <- (angle.frame[which(dbvals == 85)])
+d.85.left <- d.85[1:6]
+d.50.right <- d.85[7:11]
+
+d.90 <- (angle.frame[which(dbvals == 90)])
+d.90.left <- d.90[1:5]
+d.90.right <- d.90[6:12]
+
+d.left <- c(d.50.left, d.55.left, d.60.left, d.65.left, d.70.left, d.75.left, d.80.left, d.85.left, d.90.left)
+twitch.left <- rep(0, length(d.left))
+for(i in 1: length(d.left)){
+  twitch.left[i] <- which(angle.frame == d.left[i])
+}
+
+# par(mgp=c(2.5,0.9,0))
+# boxplot(d.50, d.55, d.60, d.65, d.70, d.75, d.80, d.85, d.90, at = c(1,3,5,7,9,11,13,15,17),
+#         ylab = expression(paste("Angle Measure (",degree, ")")), cex.lab = 1.5, cex.axis = 1.2,
+#         names = c("50 dB", "55 dB", "60 dB","65 dB", "70 dB", "75 dB", "80 dB", "85 dB", "90 dB"), las = 0, 
+#         col = c(rgb(1,0,0,.5),rgb(0,1,0,.5), rgb(0,0,1,.5),rgb(1,0,0,.5),rgb(0,1,0,.5), rgb(0,0,1,.5),rgb(1,0,0,.5),rgb(0,1,0,.5), rgb(0,0,1,.5)), 
+#         border = "black", horizontal = FALSE, notch = FALSE )
+# points(x = rnorm(length(d.50), mean = 1, sd = .1), y = d.50)
+# points(x = rnorm(length(d.55), mean = 3, sd = .1), y = d.55)
+# points(x = rnorm(length(d.60), mean = 5, sd = .1), y = d.60)
+# points(x = rnorm(length(d.65), mean = 7, sd = .1), y = d.65)
+# points(x = rnorm(length(d.70), mean = 9, sd = .1), y = d.70)
+# points(x = rnorm(length(d.75), mean = 11, sd = .1), y = d.75)
+# points(x = rnorm(length(d.80), mean = 13, sd = .1), y = d.80)
+# points(x = rnorm(length(d.85), mean = 15, sd = .1), y = d.85)
+# points(x = rnorm(length(d.90), mean = 17, sd = .1), y = d.90)
 
 
 
