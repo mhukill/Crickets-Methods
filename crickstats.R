@@ -769,50 +769,92 @@ for(i in 1:length(shots)){
 # points(x = rnorm(length(mid), mean = 3, sd = .1), y = mid)
 # points(x = rnorm(length(high), mean = 5, sd = .1), y = high)
 
-plot(angle.frame, average.twitch, xlab = "angle.frame", ylab = "average.twitch", xlim = c(-4, 12))
+angle.frame = angle.frame[1:438]
+average.twitch = average.twitch[1:438]
 
-d.50 <- (angle.frame[which(dbvals == 50)])
-d.50.left <- d.50[1:5]
-d.50.right <- d.50[6:11]
+a.50 <- (angle.frame[which(dbvals == 50)])
+t.50 <- (average.twitch[which(dbvals == 50)])
+a.50.left <- a.50[1:5]
+a.50.right <- a.50[6:11]
+t.50.left <- t.50[1:5]
+t.50.right <- t.50[6:11]
 
-d.55 <- (angle.frame[which(dbvals == 55)])
-d.55.left <- d.55[1:6]
-d.55.right <- d.55[7:12]
+a.55 <- (angle.frame[which(dbvals == 55)])
+t.55 <- (average.twitch[which(dbvals == 55)])
+a.55.left <- a.55[1:6]
+a.55.right <- a.55[7:12]
+t.55.left <- t.55[1:6]
+t.55.right <- t.55[7:12]
 
+a.60 <- (angle.frame[which(dbvals == 60)])
+t.60 <- (average.twitch[which(dbvals == 60)])
+a.60.left <- a.60[1:5]
+a.60.right <- a.60[6:11]
+t.60.left <- t.60[1:5]
+t.60.right <- t.60[6:11]
 
-d.60 <- (angle.frame[which(dbvals == 60)])
-d.60.left <- d.60[1:5]
-d.60.right <- d.60[6:11]
+a.65 <- (angle.frame[which(dbvals == 65)])
+t.65 <- (average.twitch[which(dbvals == 65)])
+a.65.left <- a.65[1:5]
+a.65.right <- a.65[6:10]
+t.65.left <- t.65[1:5]
+t.65.right <- t.65[6:10]
 
-d.65 <- (angle.frame[which(dbvals == 65)])
-d.65.left <- d.65[1:5]
-d.65.right <- d.65[6:10]
+a.70 <- (angle.frame[which(dbvals == 70)])
+t.70 <- (average.twitch[which(dbvals == 70)])
+a.70.left <- a.70[1:5]
+a.70.right <- a.70[6:10]
+t.70.left <- t.70[1:5]
+t.70.right <- t.70[6:10]
 
-d.70 <- (angle.frame[which(dbvals == 70)])
-d.70.left <- d.70[1:5]
-d.70.right <- d.70[6:10]
+a.75 <- (angle.frame[which(dbvals == 75)])
+t.75 <- (average.twitch[which(dbvals == 75)])
+a.75.left <- a.75[1:5]
+a.75.right <- a.75[6:10]
+t.75.left <- t.75[1:5]
+t.75.right <- t.75[6:10]
 
-d.75 <- (angle.frame[which(dbvals == 75)])
-d.75.left <- d.75[1:5]
-d.75.right <- d.75[6:10]
+a.80 <- (angle.frame[which(dbvals == 80)])
+t.80 <- (average.twitch[which(dbvals == 80)])
+a.80.left <- a.80[1:6]
+a.80.right <- a.80[7:12]
+t.80.left <- t.80[1:6]
+t.80.right <- t.80[7:12]
 
-d.80 <- (angle.frame[which(dbvals == 80)])
-d.80.left <- d.80[1:6]
-d.80.right <- d.80[7:12]
+a.85 <- (angle.frame[which(dbvals == 85)])
+t.85 <- (average.twitch[which(dbvals == 85)])
+a.85.left <- a.85[1:6]
+a.85.right <- a.85[7:11]
+t.85.left <- t.85[1:6]
+t.85.right <- t.85[7:11]
 
-d.85 <- (angle.frame[which(dbvals == 85)])
-d.85.left <- d.85[1:6]
-d.50.right <- d.85[7:11]
+a.90 <- (angle.frame[which(dbvals == 90)])
+t.90 <- (average.twitch[which(dbvals == 90)])
+a.90.left <- a.90[1:5]
+a.90.right <- a.90[6:12]
+t.90.left <- t.90[1:5]
+t.90.right <- t.90[6:12]
 
-d.90 <- (angle.frame[which(dbvals == 90)])
-d.90.left <- d.90[1:5]
-d.90.right <- d.90[6:12]
-
-d.left <- c(d.50.left, d.55.left, d.60.left, d.65.left, d.70.left, d.75.left, d.80.left, d.85.left, d.90.left)
-twitch.left <- rep(0, length(d.left))
-for(i in 1: length(d.left)){
-  twitch.left[i] <- which(angle.frame == d.left[i])
-}
+col.vec <- rainbow(9)
+plot(seq(-5, 10, by = 1), seq(-5, 10, by = 1), ylim = log(c(3000, 130000)), xlab = "Angle Value (per frame)", ylab = "Log of Average Twitch (per frame)", col="white")
+points(a.50.left, log(t.50.left), col = col.vec[1], pch = 17)
+points(a.50.right, log(t.50.right), col = col.vec[1], pch = 16)
+points(a.55.left, log(t.55.left), col = col.vec[2], pch = 17)
+points(a.55.right, log(t.55.right), col = col.vec[2], pch = 16)
+points(a.60.left, log(t.60.left), col = col.vec[3], pch = 17)
+points(a.60.right, log(t.60.right), col = col.vec[3], pch = 16)
+points(a.65.left, log(t.65.left), col = col.vec[4], pch = 17)
+points(a.65.right, log(t.65.right), col = col.vec[4], pch = 16)
+points(a.70.left, log(t.75.left), col = col.vec[5], pch = 17)
+points(a.70.right, log(t.75.right), col = col.vec[5], pch = 16)
+points(a.75.left, log(t.75.left), col = col.vec[6], pch = 17)
+points(a.75.right, log(t.75.right), col = col.vec[6], pch = 16)
+points(a.80.left, log(t.80.left), col = col.vec[7], pch = 17)
+points(a.80.right, log(t.80.right), col = col.vec[7], pch = 16)
+points(a.85.left, log(t.85.left), col = col.vec[8], pch = 17)
+points(a.85.right, log(t.85.right), col = col.vec[8], pch = 16)
+points(a.90.left, log(t.90.left), col = col.vec[9], pch = 17)
+points(a.90.right, log(t.90.right), col = col.vec[9], pch = 16)
 
 # par(mgp=c(2.5,0.9,0))
 # boxplot(d.50, d.55, d.60, d.65, d.70, d.75, d.80, d.85, d.90, at = c(1,3,5,7,9,11,13,15,17),
