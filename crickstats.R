@@ -650,90 +650,6 @@ for(i in 7:(N-5))
 }
 
 
-# plot(ab_x, ab_y, col = "navy", xlim = c(0, 1000), ylim = c(800, 0), pch = 1, cex = 0.75,
-#      xlab = "X position in pixels", ylab = "Y position in pixels", cex.lab = 1.5, cex.axis = 1.2)
-# points(wax_x, wax_y, col = "blue", cex = 0.75)
-# points(left_knee_x, left_knee_y, col="lightgreen", cex = 0.75)
-# points(right_knee_x, right_knee_y, col = "orangered", cex = 0.75)
-# points(left_foot_x, left_foot_y, col = "gold", cex = 0.75)
-# points(right_foot_x, right_foot_y, col = "brown", cex = 0.75)
-
-
-# par(mfrow=c(2,1))
-# 
-# par(mai=c(1.02,0.82,0.82,1.92), xpd=TRUE)
-# 
-# plot(1:frame_len, ab_x, type = 'l', lty = 2, col = "navy", ylim = c(500, 850), xlab = "Frame Index",
-#      ylab = 'X-position in pixels', cex.lab = 1.15, cex.axis = 1.1)
-# #points(1:frame_len, ab_y, type = 'l', col = 'navy')
-# #points(1:frame_len, wax_x, type = 'l', lty = 2, col = 'blue')
-# #points(1:frame_len, wax_y, type = 'l', col = 'blue')
-# points(1:frame_len, left_knee_x, type = 'l', lty = 2, col = 'lightgreen')
-# #points(1:frame_len, left_knee_y, type = 'l', col = 'lightgreen')
-# points(1:frame_len, right_knee_x, type = 'l', lty = 2, col = 'orangered')
-# #points(1:frame_len, right_knee_y, type = 'l', col = 'orangered')
-# points(1:frame_len, left_foot_x, type = 'l', lty =2, col = 'gold')
-# #points(1:frame_len, left_foot_y, type = 'l', col = 'gold')
-# points(1:frame_len, right_foot_x, type = 'l', lty = 2, col = 'brown')
-# #points(1:frame_len, right_foot_y, type = 'l', col = 'brown')
-# 
-# legend(5600, 905, legend=c("Abdomen X", "Left Knee X", "Right Knee x", "Left Foot X", "Right Foot X"),
-#        col=c("navy",  "lightgreen",  "orangered",  "gold", "brown"),
-#        lty=c(1, 1, 1, 1, 1), cex=.95,
-#        title="Body Part Color", text.font =3)
-# 
-# 
-# par(mai=c(1.02,0.82,0.82,1.92), xpd=TRUE)
-# 
-# plot(1:frame_len, ab_y, type = 'l', lty = 2, col = "navy", ylim = c(350, 650), xlab = "Frame Index",
-#      ylab = 'Y-position in pixels', cex.lab = 1.15, cex.axis = 1.1)
-# #points(1:frame_len, ab_y, type = 'l', col = 'navy')
-# #points(1:frame_len, wax_x, type = 'l', lty = 2, col = 'blue')
-# #points(1:frame_len, wax_y, type = 'l', col = 'blue')
-# #points(1:frame_len, left_knee_x, type = 'l', lty = 2, col = 'lightgreen')
-# points(1:frame_len, left_knee_y, type = 'l', col = 'lightgreen')
-# #points(1:frame_len, right_knee_x, type = 'l', lty = 2, col = 'orangered')
-# points(1:frame_len, right_knee_y, type = 'l', col = 'orangered')
-# #points(1:frame_len, left_foot_x, type = 'l', lty =2, col = 'gold')
-# points(1:frame_len, left_foot_y, type = 'l', col = 'gold')
-# #points(1:frame_len, right_foot_x, type = 'l', lty = 2, col = 'brown')
-# points(1:frame_len, right_foot_y, type = 'l', col = 'brown')
-# 
-# legend(5600, 720, legend=c("Abdomen Y", "Left Knee Y", "Right Knee Y","Left Foot Y", "Right Foot Y"),
-#        col=c("navy", "lightgreen", "orangered", "gold", "brown"),
-#        lty=c( 2, 2,  2, 2, 2), cex=.95,
-#        title="Body Part Color", text.font =3)
-# 
-# 
-# 
-# par(mai=c(1.02,0.82,0.82,1.92), xpd=TRUE)
-# 
-# plot(1:frame_len, ab_x, type = 'l', lty = 2, col = "navy", ylim = c(350, 850), xlab = "Frame Index",
-#      ylab = 'X- and Y-position in pixels', cex.lab = 1.15, cex.axis = 1.1)
-# points(1:frame_len, ab_y, type = 'l', col = 'navy')
-# #points(1:frame_len, wax_x, type = 'l', lty = 2, col = 'blue')
-# #points(1:frame_len, wax_y, type = 'l', col = 'blue')
-# points(1:frame_len, left_knee_x, type = 'l', lty = 2, col = 'lightgreen')
-# points(1:frame_len, left_knee_y, type = 'l', col = 'lightgreen')
-# points(1:frame_len, right_knee_x, type = 'l', lty = 2, col = 'orangered')
-# points(1:frame_len, right_knee_y, type = 'l', col = 'orangered')
-# points(1:frame_len, left_foot_x, type = 'l', lty =2, col = 'gold')
-# points(1:frame_len, left_foot_y, type = 'l', col = 'gold')
-# points(1:frame_len, right_foot_x, type = 'l', lty = 2, col = 'brown')
-# points(1:frame_len, right_foot_y, type = 'l', col = 'brown')
-# par(fig = c(0, 1, 0, 1), oma = c(0, 0, 0, 0), mar = c(0, 0, 0, 0), new = TRUE)
-# legend(5600, 730, legend=c("Abdomen X", "Abdomen Y", "Left Knee X", "Left Knee Y", "Right Knee x", "Right Knee Y",
-#                            "Left Foot X", "Left Foot Y", "Right Foot X", "Right Foot Y"),
-#        col=c("navy", "navy", "lightgreen", "lightgreen", "orangered", "orangered", "gold", "gold", "brown", "brown"),
-#        lty=c(1, 2, 1, 2, 1, 2, 1, 2, 1, 2), cex=1.05,
-#        title="Body Part Color", text.font =3)
-# 
-# 
-# 
-# 
-# 
-
-#dev.off()
 ## Boxplot Visualization of Response ##
 dbvals <- rep(0, length(shots))
 
@@ -769,8 +685,8 @@ for(i in 1:length(shots)){
 # points(x = rnorm(length(mid), mean = 3, sd = .1), y = mid)
 # points(x = rnorm(length(high), mean = 5, sd = .1), y = high)
 
-angle.frame = angle.frame[1:438]
-average.twitch = average.twitch[1:438]
+# angle.frame.abbr = angle.frame[1:438]
+# average.twitch = average.twitch[1:438]
 
 a.50 <- (angle.frame[which(dbvals == 50)])
 t.50 <- (average.twitch[which(dbvals == 50)])
@@ -835,8 +751,15 @@ a.90.right <- a.90[6:12]
 t.90.left <- t.90[1:5]
 t.90.right <- t.90[6:12]
 
+par(mar=c(5.1, 4.1, 4.1, 10.1))
 col.vec <- rainbow(9)
-plot(seq(-5, 10, by = 1), seq(-5, 10, by = 1), ylim = log(c(3000, 130000)), xlab = "Angle Value (per frame)", ylab = "Log of Average Twitch (per frame)", col="white")
+plot(seq(-3, 11, by = 1), seq(-3, 11, by = 1), ylim = log(c(3000, 130000)), cex.axis = 1.35, cex.lab = 1.35,
+     xlab = "Angle Value (per frame)", ylab = "Log of Average Twitch (per frame)", col="white")
+legend(12.08, 11.76, xpd = TRUE, cex=1.1, pt.cex = 1, 
+       legend = c("50 ", "55 ", "60 ", "65 ", "70 ", "75 ", "80 ", "85 ", "90 "), 
+       col = col.vec,lty=1:1, lwd=2, ncol = 1, title = 'dB')
+legend(12.08, 8.95, xpd = TRUE, cex=1.1, pch=c(17, 16), pt.cex = 1, 
+       legend = c(" Left  ", " Right  "), title = "Position")
 points(a.50.left, log(t.50.left), col = col.vec[1], pch = 17)
 points(a.50.right, log(t.50.right), col = col.vec[1], pch = 16)
 points(a.55.left, log(t.55.left), col = col.vec[2], pch = 17)
