@@ -130,10 +130,15 @@ cricket_graph <- function(start, end){
 }
 
 T=5262
+library(jpeg)
+img <- readJPEG("testpic.jpg")
+
 
 pdf('Figures/191009_190708_ALTtestfile.pdf',width=30,height=20)
 num.frames <- 277
-par(mfrow=c(10,10),mar=c(0.1,0.1,0.1,0.1))
+par(mfrow=c(4,5),mar=c(0.1,0.1,0.1,0.1))
+plot(1:10,ty="n", axes=FALSE, ylab="", xlab="")
+rasterImage(img,0,0,10,10)
 for(i in seq(0, T, num.frames)){
   cricket_graph(i, i+num.frames-1)
 }
