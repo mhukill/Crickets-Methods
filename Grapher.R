@@ -35,6 +35,7 @@ box()
 axis(2,at=seq(-2,10,by=2),labels=seq(-2,10,by=2),cex.axis=2.5)
 cols <- rep("midnightblue",length(ss_x))
 
+## BANDAID FIX FOR THE DECIBEL STUFF
 # 5,5 | 4,5 | 5,5 | 5,5 | 5,5 | 5,5 | 5,5 | 5,5 | 5,4
 ud <- c(5,5,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4)
 out <- rep(0,0)

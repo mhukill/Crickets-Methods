@@ -1,38 +1,37 @@
 ## Calculator.R: performs calculations and visualization routine given a file name
 ## Uses Reader.R script to read in the data; Functions.R script to define functions
 
+# Some positions of interest
+thorax_x_mean <- mean(ab_x)
+thorax_y_mean <- mean(ab_y)
+frame_len <- length(ab_x) # this is how many frames are in the dataset
 
-#find the angle between the ab and the center line 
+# Find the angle between the abdomen and the center line:
 a <- dist.func(ab_x,ab_y,wax_x,ab_y)
 b <- dist.func(wax_x,wax_y,wax_x,ab_y)
 c <- dist.func(ab_x,ab_y,wax_x,wax_y)
 
-angles <- acos((b^2+c^2-a^2)/(2*b*c))
+angles <- acos((b^2+c^2-a^2)/(2*b*c))*180/pi # angle calculation
 
-for (i in 1:frame_len)
-{
-  if (ab_x[i] <= wax_x[i])
-  {
-    angles[i] <- -angles[i]
+# Define center line (wax) as zero; make angles positive or negative deviation from that line:
+for (i in 1:frame_len){ 
+  if (ab_x[i] <= wax_x[i]){
+    angles[i] <- -angles[i] 
   }
-  
 }
 
-angles <- angles*180/pi
 
-T=frame_len
-num.frames <- 12
-angle.frame <- rep(0, frame_len/num.frames)
-for(i in seq(0, T, num.frames))
-{
+T=frame_len # frames in dataset
+num.frames <- 12 # shots per frame. set to 12 after discussion and experimentation
+angle.frame <- rep(0, frame_len/num.frames) # calculating average angle per shot
+for(i in seq(0, T, num.frames)){
   angle.frame[i/num.frames] <- mean(angles[i:i+num.frames-1])  
 }
 
 frames <- seq(1:frame_len)
 shots <- rep(0, frame_len/num.frames)
 
-for (i in seq(0, T, num.frames))
-{
+for (i in seq(0, T, num.frames)){
   shots[i/num.frames] <- i
 }
 

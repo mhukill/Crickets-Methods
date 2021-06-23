@@ -1,18 +1,12 @@
 ## Reader.R: reads in data, defines regions of interest (ROIs). Used with Master.R
 data <- read.csv("191009_190708_ALT.test.file.csv", # generates dataframe from .csv file
                  skip = 3, header = FALSE) # skip first 3 lines, ignore header names
-
 ## Defining ROIs
 frame_col <- data[,1]
-thorax_x <- data[,2]
-thorax_y <- data[,3]
 ab_x <- data[,2]
+  thorax_x <- ab_x
 ab_y <- data[,3]
-
-thorax_x_mean <- mean(thorax_x)
-thorax_y_mean <- mean(thorax_y)
-
-frame_len <- length(ab_x) 
+  thorax_y <- ab_y
 
 wax_x <- data[,5]
 wax_y <- data[,6]
@@ -31,4 +25,3 @@ right_knee_y <- data[, 18]
 
 right_foot_x <- data[, 20]
 right_foot_y <- data[, 21]
-

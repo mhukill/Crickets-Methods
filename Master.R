@@ -1,5 +1,5 @@
 ## Master.R 
-setwd("~/Documents/GitHub/Crickets-Methods/Final")
+setwd("~/Documents/GitHub/Crickets-Methods")
 ## Generates 
 source("Functions.R")
 source("Reader.R")

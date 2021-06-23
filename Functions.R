@@ -1,6 +1,6 @@
 ## Functions.R: defines functions needed. Used with Master.R
 
-## Pick's Theorem: the most important area calculation formula used in this pipeline
+## Pick's Theorem: the underlying area calculation formula used in this pipeline
 picks_theorem <- function(vector1, vector2){ # IN: two vectors; OUT: area of the polygon they form
   sum1 <- 0
   for(i in 1:(length(vector1)-1)){
