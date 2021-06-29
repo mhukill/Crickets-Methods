@@ -1,6 +1,6 @@
 ## Figure 2 of DLC Paper. Uses example .csv file and cricket jpeg to generate PDF.
 library(jpeg)
-setwd("~/Documents/GitHub/Crickets-Methods")
+setwd("~/Documents/GitHub/Crickets-Methods/DLC_csv_files")
 data <- read.csv("191009_190708_ALT.test.file.csv", # generates dataframe from .csv file
                  skip = 3, header = FALSE) # skip first 3 lines, ignore header names
 setwd("~/Documents/GitHub/Crickets-Methods/Figure-2")
@@ -133,7 +133,7 @@ cricket_graph <- function(start, end){
 
 T=5262
 
-pdf('Figure_2.pdf',width=30,height=20)
+pdf('demo_color.pdf',width=30,height=20)
 num.frames <- 277
 par(mfrow=c(4,5),mar=c(0.1,0.1,0.1,0.1))
 plot(1:10,ty="n", axes=FALSE, ylab="", xlab="")

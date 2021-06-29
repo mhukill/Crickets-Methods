@@ -1,6 +1,12 @@
-## Grapher.R
+## 5_Grapher.R. Used with 1_Master.
+setwd(output_directory) # enter subdirectory in which to store graphs
+if(is.null(output_name)){ # generates the output name file according to preference specified in 1_Master.R
+  output_name_pdf <- paste(file_name, "_graphs.pdf", sep='')
+} else{
+  output_name_pdf <- paste(output_name, ".pdf", sep='')
+}
 
-pdf('F4S_demo.pdf', width=30,height=20)
+pdf(output_name_pdf, width=30,height=20)
 par(mfrow = c(4,1), mar = c(0.5,7,0.5,0.5), oma = c(10,2,4,24),cex.lab=1.5,cex.axis=1.5)
 plot(viz_a_x[14,],viz_a_y[14,], xlab = '', ylab='', ylim=c(-700,-100), col = "black",pch = 16,axes=FALSE, xaxt = 'n')
 points(viz_w_x[14,],viz_w_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "blue",pch = 16,cex=3)
@@ -35,52 +41,68 @@ box()
 axis(2,at=seq(-2,10,by=2),labels=seq(-2,10,by=2),cex.axis=2.5)
 cols <- rep("midnightblue",length(ss_x))
 
-## BANDAID FIX FOR THE DECIBEL STUFF
-# 5,5 | 4,5 | 5,5 | 5,5 | 5,5 | 5,5 | 5,5 | 5,5 | 5,4
-ud <- c(5,5,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4)
-out <- rep(0,0)
-
-light.green <- rgb(0.1,0.9,0.1,0.5)
-light.red <- rgb(0.9,0.1,0.1,0.5)
-
-for(r in 1:length(ud))
-{
-  if (r%%2 ==1)
+if(file_name_csv == "191009_190708_ALT.test.file_csv"){ ## this was used back when the decibel measurements weren't working properly: ignore it, don't delete it.
+  ## BANDAID FIX FOR THE DECIBEL ISSUE
+  # 5,5 | 4,5 | 5,5 | 5,5 | 5,5 | 5,5 | 5,5 | 5,5 | 5,4
+  ud <- c(5,5,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4)
+  out <- rep(0,0)
+  
+  light.green <- rgb(0.1,0.9,0.1,0.5)
+  light.red <- rgb(0.9,0.1,0.1,0.5)
+  
+  for(r in 1:length(ud))
   {
-    out <- c(out,rep(1,ud[r])) 
-  }else
-  {
-    out <- c(out,rep(2,ud[r])) 
-  }
-}
-
-counter <- 0
-for(j in 2:(length(ss_x)-1))
-{
-  if ((ss_x[j]>0)&(ss_x[j-1]==0))
-  {
-    counter <- counter +1
-  }
-  if (ss_x[j]>0)
-  {
-    if(out[counter]==1)
+    if (r%%2 ==1)
     {
-      cols[j] <- light.red
+      out <- c(out,rep(1,ud[r])) 
     }else
     {
-      cols[j] <- light.green
+      out <- c(out,rep(2,ud[r])) 
     }
   }
+  
+  counter <- 0
+  for(j in 2:(length(ss_x)-1))
+  {
+    if ((ss_x[j]>0)&(ss_x[j-1]==0))
+    {
+      counter <- counter +1
+    }
+    if (ss_x[j]>0)
+    {
+      if(out[counter]==1)
+      {
+        cols[j] <- light.red
+      }else
+      {
+        cols[j] <- light.green
+      }
+    }
+  }
+  
+  par(mar=c(5,7,0.5,0.5))
+  plot(1:frame_len,ss_x,  type = "h", xlab = "", ylab = "",pch=20, col = cols,axes=FALSE,ylim=c(0,100),cex=3,yaxs='i')
+  axis(1,labels=TRUE,cex.axis=3,line=1,tick=FALSE)
+  mtext(side=2,"Sound (dB)",line=4,cex=3)
+  mtext(side=1,"Frame",line=4,cex=3)
+  axis(2,labels=c(30,60,90),at=c(30,60,90),cex.axis=2.5)
+  legend(x="topleft",legend=c("L","R"),title="Side",col=c(light.red,light.green),cex=5,pch=20)
+  text(x=(-85),y=(10),label="(D)",cex=5)
+  box()
+} else{
+  par(mar=c(5,7,0.5,0.5))
+  plot(1:frame_len, ss_x, type='l', col = "seagreen", xlab="Frame", ylab='DLC Coord')
+       # xlab = "", ylab = "", axes=FALSE, ylim=c(0,100), cex=3, yaxs='i')
+  # axis(1,labels=TRUE,cex.axis=3,line=1,tick=FALSE)
+  # mtext(side=2,"Sound (dB)",line=4,cex=3)
+  # mtext(side=1,"Frame",line=4,cex=3)
+  # axis(2,labels=c(30,60,90),at=c(30,60,90),cex.axis=2.5)
+  # legend(x="topleft",legend=c("L","R"),title="Side",col=c(light.red,light.green),cex=5,pch=20)
+  # text(x=(-85),y=(10),label="(D)",cex=5)
+  box()
 }
 
-par(mar=c(5,7,0.5,0.5))
-plot(1:frame_len,ss_x,  type = "h", xlab = "", ylab = "",pch=20, col = cols,axes=FALSE,ylim=c(0,100),cex=3,yaxs='i')
-axis(1,labels=TRUE,cex.axis=3,line=1,tick=FALSE)
-mtext(side=2,"Sound (dB)",line=4,cex=3)
-mtext(side=1,"Frame",line=4,cex=3)
-axis(2,labels=c(30,60,90),at=c(30,60,90),cex.axis=2.5)
-legend(x="topleft",legend=c("L","R"),title="Side",col=c(light.red,light.green),cex=5,pch=20)
-text(x=(-85),y=(10),label="(D)",cex=5)
-box()
 
 dev.off()
+
+setwd(primary_directory) # return to main directory

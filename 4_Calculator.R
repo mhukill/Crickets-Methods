@@ -1,5 +1,4 @@
-## Calculator.R: performs calculations and visualization routine given a file name
-## Uses Reader.R script to read in the data; Functions.R script to define functions
+## 4_Calculator.R: performs calculations and visualization routine given a file name. Used with 1_Master.R
 
 # Some positions of interest
 thorax_x_mean <- mean(ab_x)
