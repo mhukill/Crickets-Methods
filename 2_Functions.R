@@ -259,7 +259,30 @@ lowerright <- function(lk_x, lk_y, lk_x_mean, lk_y_mean, # lower right area
   }
 }
 
-## Other functions
+## Graphical functions
+
+scale.sound <- function(dlc_x, min_db=0, max_db){ # converts sound units from DLC to dB
+  # IN: vector of unconverted x-coordinates from DLC representing sound volume; minimum dB value in experiment; maximum dB value in experiment
+  # OUT: vector of scaled x-coordinates in dB units
+  base_dlc <- min(dlc_x) # DLC coordinate value corresponding to smallest dB value
+  apex_dlc <- max(dlc_x) # DLC coordinate value corresponding to greatest dB value
+  sf <- (max_db - min_db)/(apex_dlc - base_dlc) # calculate the scale factor
+  db_x <- (dlc_x-base_dlc)*sf + min_db # converts into decibels
+  return(db_x)
+}
+
+position.label <- function(xvals, yvals, pos.vec){ # finds coordinates for letter label in figure
+  # IN: various xvals
+  xlims <- range(xvals, na.rm=TRUE)
+  xcoord <- xlims[1] + (xlims[2] - xlims[1])*pos.vec[1]
+  
+  ylims <- range(yvals, na.rm=TRUE)
+  ycoord <- ylims[1] + (ylims[2] - ylims[1])*pos.vec[2]
+  
+  return(c(xcoord, ycoord))
+}
+
+## Misc functions
 dist.func <- function(x1,y1,x2,y2) # calculates Euclidean distance between two vectors
 {
   sqrt((x2-x1)^2 + (y2-y1)^2) 

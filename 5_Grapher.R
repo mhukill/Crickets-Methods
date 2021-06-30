@@ -8,6 +8,8 @@ if(is.null(output_name)){ # generates the output name file according to preferen
 
 pdf(output_name_pdf, width=30,height=20)
 par(mfrow = c(4,1), mar = c(0.5,7,0.5,0.5), oma = c(10,2,4,24),cex.lab=1.5,cex.axis=1.5)
+
+## POSITION GRAPH
 plot(viz_a_x[14,],viz_a_y[14,], xlab = '', ylab='', ylim=c(-700,-100), col = "black",pch = 16,axes=FALSE, xaxt = 'n')
 points(viz_w_x[14,],viz_w_y[14,], xlim = c(0, frame_len), ylim=c(-800,-100), col = "blue",pch = 16,cex=3)
 points(viz_ul_x[14,],viz_ul_y[14,],col = "lime green",pch = 16,cex=3)
@@ -15,7 +17,8 @@ points(viz_ll_x[14,],viz_ll_y[14,],col = "gold2",pch = 16,cex=3)
 points(viz_ur_x[14,],viz_ur_y[14,],col = "darkorange2",pch = 16,cex=3)
 points(viz_lr_x[14,],viz_lr_y[14,],col = "red3",pch = 16,cex=3)
 box()
-text(x=(-75),y=(-650),label="(A)",cex=5)
+position_lab_coords <- position.label( viz_a_x[14,], c(-700,-100), c(-0.02, 0.1) )
+text(x=position_lab_coords[1], y=position_lab_coords[2], label="(A)",cex=5)
 mtext(side=2,"Mean Position", line=4,cex=2.5)
 for(j in 1:len)
 {
@@ -25,30 +28,49 @@ for(j in 1:len)
   segments(viz_ul_x[14,j], viz_ul_y[14,j], viz_ll_x[14,j], viz_ll_y[14,j], col = "grey", lwd = 4)
   segments(viz_ur_x[14,j], viz_ur_y[14,j], viz_lr_x[14,j], viz_lr_y[14,j], col = "grey", lwd = 4)
 }
+
+## TWITCH GRAPH
 plot(shots,lowerrightshot.twitch, type = "l", xlab = "", ylab = "", lwd = 4, col = rgb(205/255, 0, 0, 0.6),axes=FALSE)
 points(shots,bodyshot.twitch, type = "l", col = rgb(0, 0, 1, 0.6), lwd = 4)
 points(shots,lowerleftshot.twitch, type = "l", xlab = "", ylab = "Lower Left Twitch", col = rgb(238/255, 201/255, 0, 0.6), lwd = 4)
 points(shots,upperrightshot.twitch, type = "l", xlab = "", ylab = "Upper Right Twitch", col = rgb(238/255, 118/255, 0, 0.6), lwd = 4)
 points(shots,upperleftshot.twitch , type = "l", xlab = "", ylab = "Upper Left Twitch", col = rgb(50/255, 205/255, 50/255, 0.6), lwd = 4)
-text(x=(-75),y=(4000),label="(B)",cex=5)
+twitch_lab_coords <- position.label(shots, lowerrightshot.twitch, c(-0.02, 0.1) )
+text(x=twitch_lab_coords[1],y=twitch_lab_coords[2],label="(B)",cex=5)
 box()
 mtext(side=2,expression(paste("Variation (",mm^2,")",sep="")), line=4,cex=2.5)
 axis(2,at=c(10000,30000),labels=c(100,300),cex.axis=2.5)
+
+## ANGLE GRAPH
 plot(shots, angle.frame, type = "l", xlab = "",ylab = "", col = "mediumorchid4", lwd = 4,axes=FALSE)
 mtext(side=2,expression(paste("Angle (degrees)",sep="")), line=4,cex=2.5)
-text(x=(-75),y=(-2),label="(C)",cex=5)
+angle_lab_coords <- position.label( shots, angle.frame, c(-0.02, 0.1) )
+text(x=angle_lab_coords[1],y=angle_lab_coords[2],label="(C)",cex=5)
 box()
-axis(2,at=seq(-2,10,by=2),labels=seq(-2,10,by=2),cex.axis=2.5)
-cols <- rep("midnightblue",length(ss_x))
+angle_range <- round(range(angle.frame, na.rm=TRUE), 0)
+axis(2, at=seq(angle_range[1],angle_range[2], by=2), cex.axis=2.5)
+
+## SOUND GRAPH
+## Determines sidedness of sound stimulus
+cols <- rep("lightgrey", length(ss_x_db))
+light.green <- rgb(0.1,0.9,0.1,0.5)
+light.red <- rgb(0.9,0.1,0.1,0.5)
+sidedness_cutoff <- mean(range(ss_y))
+for(i in 1:frame_len){
+  if( ss_x_db[i] > 1){ # if nonzero sound, assign side
+    if(ss_y[i] < sidedness_cutoff){ # right on bottom
+    cols[i] <- light.green
+    } else { # left on top
+    cols[i] <- light.red
+    }
+  }
+}
 
 if(file_name_csv == "191009_190708_ALT.test.file_csv"){ ## this was used back when the decibel measurements weren't working properly: ignore it, don't delete it.
   ## BANDAID FIX FOR THE DECIBEL ISSUE
   # 5,5 | 4,5 | 5,5 | 5,5 | 5,5 | 5,5 | 5,5 | 5,5 | 5,4
   ud <- c(5,5,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4)
   out <- rep(0,0)
-  
-  light.green <- rgb(0.1,0.9,0.1,0.5)
-  light.red <- rgb(0.9,0.1,0.1,0.5)
   
   for(r in 1:length(ud))
   {
@@ -91,18 +113,21 @@ if(file_name_csv == "191009_190708_ALT.test.file_csv"){ ## this was used back wh
   box()
 } else{
   par(mar=c(5,7,0.5,0.5))
-  plot(1:frame_len, ss_x, type='l', col = "seagreen", xlab="Frame", ylab='DLC Coord')
-       # xlab = "", ylab = "", axes=FALSE, ylim=c(0,100), cex=3, yaxs='i')
-  # axis(1,labels=TRUE,cex.axis=3,line=1,tick=FALSE)
-  # mtext(side=2,"Sound (dB)",line=4,cex=3)
-  # mtext(side=1,"Frame",line=4,cex=3)
-  # axis(2,labels=c(30,60,90),at=c(30,60,90),cex.axis=2.5)
-  # legend(x="topleft",legend=c("L","R"),title="Side",col=c(light.red,light.green),cex=5,pch=20)
-  # text(x=(-85),y=(10),label="(D)",cex=5)
+  plot(1:frame_len, ss_x_db, type='l', lwd=4, col = "seagreen",
+       xlab = "", ylab = "", axes=FALSE, ylim=c(minimum_sound,maximum_sound*1.1), cex=3, yaxs='i')
+  # plot(1:frame_len, ss_x_db, type='p', lwd=4, pch=20, col =cols,
+  #      xlab = "", ylab = "", axes=FALSE, ylim=c(minimum_sound,maximum_sound*1.1), cex=3, yaxs='i')
+  axis(1,labels=TRUE,cex.axis=3,line=1,tick=FALSE)
+  mtext(side=2,"Sound (dB)",line=4,cex=3)
+  mtext(side=1,"Frame",line=4,cex=3)
+  axis(2,cex.axis=2.5,
+       labels=seq(minimum_sound, maximum_sound,by=tick_mark_interval), 
+       at   = seq(minimum_sound, maximum_sound, by=tick_mark_interval))
+  # legend(x="topleft", legend=c("L","R"),title="Side",col=c(light.red,light.green),cex=5,pch=20)
+  db_lab_coords <- position.label((1:frame_len), ss_x_db, c(-0.02, 0.1) )
+  text(x=db_lab_coords[1], y=db_lab_coords[2],label="(D)",cex=5)
   box()
 }
-
-
 dev.off()
 
 setwd(primary_directory) # return to main directory

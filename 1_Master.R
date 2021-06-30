@@ -28,6 +28,9 @@ source("3_Reader.R")
 cat("Step 3 Complete. Data successfully read.", "\n")
 
 ### STEP 4: Perform the relevant calculations
+minimum_sound <- 0 # in dB, typically zero
+maximum_sound <- 90 # in dB, depends on experiment
+tick_mark_interval <- 10 # in dB, space between tick marks
 source("4_Calculator.R")
 cat("Step 4 Complete. Calculations performed.", "\n")
 

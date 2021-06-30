@@ -193,3 +193,6 @@ for (s in 1:len)
     viz_ll_y[14,l] <- mean(viz_ll_y[(1:13),l])
   }
 }
+
+## Convert sound from DLC coordinates into dB
+ss_x_db <- scale.sound(ss_x, minimum_sound, maximum_sound)
