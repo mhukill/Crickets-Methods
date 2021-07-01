@@ -39,7 +39,7 @@ twitch_lab_coords <- position.label(shots, lowerrightshot.twitch, c(-0.02, 0.1) 
 text(x=twitch_lab_coords[1],y=twitch_lab_coords[2],label="(B)",cex=5)
 box()
 mtext(side=2,expression(paste("Variation (",mm^2,")",sep="")), line=4,cex=2.5)
-axis(2,at=c(10000,30000),labels=c(100,300),cex.axis=2.5)
+axis(2,at=c(10000,30000, 60000),labels=c(100,300,600),cex.axis=2.5)
 
 ## ANGLE GRAPH
 plot(shots, angle.frame, type = "l", xlab = "",ylab = "", col = "mediumorchid4", lwd = 4,axes=FALSE)
@@ -57,7 +57,7 @@ light.green <- rgb(0.1,0.9,0.1,0.5)
 light.red <- rgb(0.9,0.1,0.1,0.5)
 sidedness_cutoff <- mean(range(ss_y))
 for(i in 1:frame_len){
-  if( ss_x_db[i] > 1){ # if nonzero sound, assign side
+  if( ss_x_db[i] > 3){ # if nonzero sound, assign side
     if(ss_y[i] < sidedness_cutoff){ # right on bottom
     cols[i] <- light.green
     } else { # left on top
@@ -113,17 +113,17 @@ if(file_name_csv == "191009_190708_ALT.test.file_csv"){ ## this was used back wh
   box()
 } else{
   par(mar=c(5,7,0.5,0.5))
-  plot(1:frame_len, ss_x_db, type='l', lwd=4, col = "seagreen",
-       xlab = "", ylab = "", axes=FALSE, ylim=c(minimum_sound,maximum_sound*1.1), cex=3, yaxs='i')
-  # plot(1:frame_len, ss_x_db, type='p', lwd=4, pch=20, col =cols,
+  # plot(1:frame_len, ss_x_db, type='l', lwd=4, col = "seagreen",
   #      xlab = "", ylab = "", axes=FALSE, ylim=c(minimum_sound,maximum_sound*1.1), cex=3, yaxs='i')
+  plot(1:frame_len, ss_x_db, type='h', lwd=1, pch=20, col =cols,
+       xlab = "", ylab = "", axes=FALSE, ylim=c(minimum_sound,maximum_sound*1.1), cex=3, yaxs='i')
   axis(1,labels=TRUE,cex.axis=3,line=1,tick=FALSE)
   mtext(side=2,"Sound (dB)",line=4,cex=3)
-  mtext(side=1,"Frame",line=4,cex=3)
+  mtext(side=1,"Frame",line=8,cex=3)
   axis(2,cex.axis=2.5,
        labels=seq(minimum_sound, maximum_sound,by=tick_mark_interval), 
        at   = seq(minimum_sound, maximum_sound, by=tick_mark_interval))
-  # legend(x="topleft", legend=c("L","R"),title="Side",col=c(light.red,light.green),cex=5,pch=20)
+  legend(x="topleft", legend=c("L","R"),title="Side",col=c(light.red,light.green),cex=5,pch=20)
   db_lab_coords <- position.label((1:frame_len), ss_x_db, c(-0.02, 0.1) )
   text(x=db_lab_coords[1], y=db_lab_coords[2],label="(D)",cex=5)
   box()
