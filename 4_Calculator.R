@@ -105,7 +105,7 @@ for(i in seq(1, T-12,num.frames)){
 twitch.frame <- cbind(body.twitch, upperleft.twitch, lowerleft.twitch, upperright.twitch, lowerright.twitch)
 
 
-k <- 200
+k <- round(T/27,0) # number of crickets per sequence
 len <- length(seq(0, T, k))
 index <- seq(0, T, k)
 viz_a_x <- matrix(0, nrow=14, ncol=len)
@@ -126,12 +126,10 @@ viz_ur_y <- matrix(0, nrow=14, ncol=len)
 viz_lr_x <- matrix(0, nrow=14, ncol =len)
 viz_lr_y <- matrix(0, nrow=14, ncol=len)
 
-for (s in 1:len) 
-{
+for (s in 1:len) {
   i <- index[s] 
   
-  if (i > 0)
-  { 
+  if (i > 0){ 
     for(j in 1:13){
       viz_w_x[j,s] <- wax_x[i + (j-7)] - wax_x[i +(j-7)] + i
       viz_w_y[j,s] <- -wax_y[i+(j-7)]
@@ -151,9 +149,7 @@ for (s in 1:len)
       viz_ll_x[j,s] <-  left_foot_x[i+(j-7)] - wax_x[i+(j-7)] + i
       viz_ll_y[j,s] <- -left_foot_y[i +(j-7)]
     }
-  }
-  
-  else{
+  } else{
     viz_w_x[,s] <- wax_x[1] - wax_x[1] + i
     viz_w_y[,s] <- -wax_y[1]
     

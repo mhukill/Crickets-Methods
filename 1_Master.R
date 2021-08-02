@@ -11,9 +11,9 @@ input_directory <- "DLC_csv_files"
 setwd(primary_directory)
 
 ### STEP 1: Decide on your filename(s)
-file_name <- "190624ADeepCut_resnet50_190708Jul8shuffle1_500000_graphs" # remember quotes!!
+file_name <- "190626-R1DeepCut_resnet50_190708Jul8shuffle1_200000filtered" # remember quotes!!
     file_name_csv <- paste(file_name, ".csv", sep='') # adds suffix for you
-output_name <- NULL ## If you want to chance the output name, you can do so here. 
+output_name <- NULL ## If you want to change the output name, you can do so here. 
 ## Otherwise, leaving it as NULL will result in file_name with "_graphs.pdf" tacked on. 
 ## If you choose to change the file name, remember to use quotes and omit the .pdf (suffix added in 5_Grapher.R)
 ## (As a general rule here, you should never have to add suffixes when you type names. The scripts take care of that for you)
